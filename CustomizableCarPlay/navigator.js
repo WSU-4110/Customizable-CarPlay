@@ -1,14 +1,22 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavaigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import Landing from "./pages/landing";
-import login from "./pages/login";
-import register from "./pages/register";
-import home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Home from "./pages/home";
 
-const stack = createStackNavaigator();
+const Stack = createStackNavigator();
 
 function AppNavigator() {
-  return <NavigationContainer></NavigationContainer>;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Landing">
+        <Stack.Screen name="Landing" component={Landing} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
+
+export default AppNavigator;
