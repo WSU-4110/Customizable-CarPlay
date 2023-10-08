@@ -8,3 +8,7 @@ import register from "./pages/register";
 import home from "./pages/home";
 
 const stack = createStackNavaigator();
+
+function AppNavigator() {
+  return <NavigationContainer></NavigationContainer>;
+}
