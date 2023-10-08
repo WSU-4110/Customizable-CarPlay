@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Landing() {
   return (
     <View style={styles.container}>
-      <Text>This is the landing page</Text>
+      <Text>Landing page -Customizable Car Play</Text>
       <StatusBar style="auto" />
     </View>
   );
