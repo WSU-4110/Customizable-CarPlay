@@ -4,7 +4,7 @@ import { Footer } from "../components/footer";
 
 function Home() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>Hello, welcome to Home!</Text>
       <Footer />
     </View>

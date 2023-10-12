@@ -7,7 +7,10 @@ const FooterBar = styled.View`
   flex-direction: row;
   justify-content: space-around;
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: #a5432f;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 `;
 
 const FooterItem = styled.TouchableOpacity`
@@ -22,13 +25,13 @@ export const Footer = () => {
   return (
     <FooterBar>
       <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="create-outline" size={30} color="#4F8EF7" />
+        <Icon name="create-outline" size={30} color="#000000" />
       </FooterItem>
       <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="person-outline" size={30} color="#4F8EF7" />
+        <Icon name="person-outline" size={30} color="#000000" />
       </FooterItem>
       <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="chatbubbles-outline" size={30} color="#4F8EF7" />
+        <Icon name="chatbubbles-outline" size={30} color="#000000" />
       </FooterItem>
     </FooterBar>
   );
