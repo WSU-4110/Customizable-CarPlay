@@ -22,9 +22,14 @@ export const Footer = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
 
+  const navigateToColor = () => {
+    navigation.navigate("Colorz");
+  };
+
+
   return (
     <FooterBar>
-      <FooterItem onPress={showPlaceholderAlert}>
+      <FooterItem onPress={navigateToColor}>
         <Icon name="create-outline" size={30} color="#000000" />
       </FooterItem>
       <FooterItem onPress={showPlaceholderAlert}>
