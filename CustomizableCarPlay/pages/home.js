@@ -4,8 +4,13 @@ import { Footer } from "../components/footer";
 
 function Home() {
   return (
-    <View style={{ flex: 1 }}>
-      <Text>Hello, welcome to Home!</Text>
+    <View style={{ flex: 1, backgroundColor: "#3C3C3C" }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ color: "#FFFFFF", fontSize: 24 }}>
+          CustomizableCarPlay!
+        </Text>
+      </View>
+
       <Footer />
     </View>
   );
