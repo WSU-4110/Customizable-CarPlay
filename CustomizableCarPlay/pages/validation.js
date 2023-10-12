@@ -1,4 +1,5 @@
 // validation.js
+//note for commit
 export function isValidEmail(email) {
   // Add your email validation logic here
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
