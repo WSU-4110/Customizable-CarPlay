@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
 
+
 const FooterBar = styled.View`
   flex-direction: row;
   justify-content: space-around;
@@ -21,15 +22,11 @@ export const Footer = () => {
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
-
-  const navigateToColor = () => {
-    navigation.navigate("Colorz");
-  };
-
+ 
 
   return (
     <FooterBar>
-      <FooterItem onPress={navigateToColor}>
+      <FooterItem onPress={showPlaceholderAlert}>
         <Icon name="create-outline" size={30} color="#000000" />
       </FooterItem>
       <FooterItem onPress={showPlaceholderAlert}>

@@ -9,7 +9,12 @@ export default function Landing() {
 
   const navigateToHome = () => {
     navigation.navigate("Home");
+
   };
+
+
+
+
 
   return (
     <View>

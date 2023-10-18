@@ -40,10 +40,14 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
+
+
 function Home() {
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
   };
+ 
+
 
   return (
     <Container>
