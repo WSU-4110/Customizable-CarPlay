@@ -9,6 +9,11 @@ import {
   ButtonText,
 } from "../stylePages/homePage";
 import spotifyIcon from "../images/spotifyIcon.png";
+import instagramIcon from "../images/instagramIcon";
+import mapIcon from "../images/mapIcon";
+import TikTokIcon from "../images/TikTokIcon";
+import weatherIcon from "../images/weatherIcon";
+import whatsAppIcon from "../images/whatsAppIcon";
 
 function Home() {
   const onPressStartDriving = () => {
