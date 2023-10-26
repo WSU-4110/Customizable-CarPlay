@@ -9,11 +9,11 @@ import {
   ButtonText,
 } from "../stylePages/homePage";
 import spotifyIcon from "../images/spotifyIcon.png";
-import instagramIcon from "../images/instagramIcon";
-import mapIcon from "../images/mapIcon";
-import TikTokIcon from "../images/TikTokIcon";
-import weatherIcon from "../images/weatherIcon";
-import whatsAppIcon from "../images/whatsAppIcon";
+import instagramIcon from "../images/InstagramIcon.png";
+import mapIcon from "../images/MapsIcon.png";
+import tikTokIcon from "../images/TikTokIcon.png";
+import weatherIcon from "../images/weatherIcon.png";
+import whatsAppIcon from "../images/WhatsAppIcon.png";
 
 function Home() {
   const onPressStartDriving = () => {
@@ -28,6 +28,11 @@ function Home() {
           <ButtonText>Start Driving</ButtonText>
         </Button>
         <DraggableIcon source={spotifyIcon} />
+        <DraggableIcon source={instagramIcon} />
+        <DraggableIcon source={mapIcon} />
+        <DraggableIcon source={tikTokIcon} />
+        <DraggableIcon source={weatherIcon} />
+        <DraggableIcon source={whatsAppIcon} />
       </CenteredView>
 
       <Footer />
