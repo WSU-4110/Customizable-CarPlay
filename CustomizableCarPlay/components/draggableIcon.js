@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { Image, PanResponder, View, Animated } from "react-native";
 
-// component to accept a prop which is an image source
-const DraggableIcon = ({ source }) => {
-  // useRef to prevent excessive re-renders during animation
+const DraggableIcon = ({ source, initialPosition = { x: 0, y: 0 } }) => {
   const pan = useRef(new Animated.ValueXY()).current;
+
+  useEffect(() => {
+    pan.setValue(initialPosition);
+  }, []);
   // create new PanResponder instance for touch events
   const panResponder = PanResponder.create({
     // recognize movement when user touches element
@@ -21,8 +23,7 @@ const DraggableIcon = ({ source }) => {
         x: pan.x._value,
         y: pan.y._value,
       });
-      // start value
-      pan.setValue({ x: -100, y: -100 });
+      pan.setValue({ x: 0, y: 0 }); // Reset the pan value
     },
   });
 
