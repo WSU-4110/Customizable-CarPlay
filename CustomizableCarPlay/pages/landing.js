@@ -1,22 +1,23 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { View, Text } from "react-native";
+import { StyledButton, StyledButtonText } from "../StyledComponents";
+import { useNavigation } from "@react-navigation/native";
 
-// Capitalize component function name
 export default function Landing() {
+  const navigation = useNavigation();
+
+  const navigateToHome = () => {
+    navigation.navigate("Home");
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Landing page -Customizable Car Play</Text>
+    <View>
+      <Text>Landing page - Customized Car Play</Text>
+      <StyledButton onPress={navigateToHome}>
+        <StyledButtonText>Start</StyledButtonText>
+      </StyledButton>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
