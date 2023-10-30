@@ -1,18 +1,18 @@
-import { NativeEventEmitter, NativeModules } from 'react-native';
+//import { NativeEventEmitter, NativeModules } from 'react-native';//
 
-const { AlanManager, AlanEventEmitter } = NativeModules;
-const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+//const { AlanManager, AlanEventEmitter } = NativeModules;
+//const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
 
-let subscription;
+//let subscription;
 
-export const initializeAlanEmitter = () => {
-    subscription = alanEventEmitter.addListener('command', (data) => {
-        console.log(`got command event ${JSON.stringify(data)}`);
-    });
-};
+//export const initializeAlanEmitter = () => {
+//    subscription = alanEventEmitter.addListener('command', (data) => {
+//        console.log(`got command event ${JSON.stringify(data)}`);
+//    });
+//};
 
-export const terminateAlanEmitter = () => {
-    if (subscription) {
-        subscription.remove();
-    }
-};
+//export const terminateAlanEmitter = () => {
+//    if (subscription) {
+//        subscription.remove();
+//    }
+//};
