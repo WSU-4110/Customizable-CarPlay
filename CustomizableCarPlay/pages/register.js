@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {creatContext, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 // Import the validation functions
+import{AuthContext} from '../navigation/AuthProvider';
 import { isValidEmail, isValidPassword } from './validation'; // Adjust the import path if needed
 
 function Register({navigation}) {
@@ -14,7 +15,7 @@ function Register({navigation}) {
   const [emptyFieldError, setEmptyFieldError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
+  const{register} = useContext(AuthContext);
   // State to track whether registration is completed
   const [registrationCompleted, setRegistrationCompleted] = useState(false);
 
@@ -105,8 +106,9 @@ function Register({navigation}) {
     
             {/* Other input fields and error messages go here */}
     
-            <Button title="Register" onPress={handleRegister} />
-            <Button title="Skip" onPress={handleSkipRegistration} />
+            <Button title="Register" onPress=
+            {() register(email,password)}/*{handleRegister} />
+            <Button title="Skip" onPress={handleSkipRegistration}*/ />
             </>
           )}
         </View>
