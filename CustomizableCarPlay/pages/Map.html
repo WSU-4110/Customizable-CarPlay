@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My GPS Application</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA3WTCIbiw7tgwkEf-3i83VP4q8W68Tu8"></script>
+  <script src="App.js"></script>
+
+</head>
+<body>
+  <div id="map-canvas" style="width: 100%; height: 1000px"></div>
+
+  <script>
+    // Create a new Google map object.
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: { lat: 40.7127837, lng: -74.0059413 },
+      zoom: 11
+    });
+
+    // Get the user's current position.
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // Create a new marker at the user's current position.
+      var marker = new google.maps.Marker({
+        position: { lat: position.coords.latitude, lng: position.coords.longitude },
+        map: map
+      });
+    });
+
+    // Track the user's position over time.
+    var watchId = navigator.geolocation.watchPosition(function(position) {
+      // Update the marker's position.
+      marker.setPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
+    });
+
+    // Stop tracking the user's position.
+    function stopTracking() {
+      navigator.geolocation.clearWatch(watchId);
+    }
+  </script>
+</body>
+</html>
