@@ -1,43 +1,38 @@
-import React, { Component } from "react";
+//Original App.js
+import React, {useEffect} from "react";
+//import firebase from 'firebase';
 import AppNavigator from "./navigator";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { AlanView } from '@alan-ai/alan-sdk-react-native';
-import { NativeEventEmitter, NativeModules } from 'react-native';
+import alanBtn from '@alan-ai/alan-sdk-react-native'
 
+//firebase.initializeApp(firebaseConfig);
+const alanKey = '1779461c5737aa4b5952c0d4449c96802e956eca572e1d8b807a3e2338fdd0dc/stage'
 
-const { AlanManager } = NativeModules;
-//const { AlanManager, AlanEventEmitter } = NativeModules;
-const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
-const subscription = alanEventEmitter.addListener('command', (data) => {
-  console.log(`got command event ${JSON.stringify(data)}`);
-});
-
-export default class App extends Component {
-
-  render() {
-    /// Add Alan Button with project key from Alan AI Studio
-    <AlanView projectid={'1779461c5737aa4b5952c0d4449c96802e956eca572e1d8b807a3e2338fdd0dc/stage'}/>
-  }
-  
-  componentDidMount() {
-    /// Handle commands from Alan AI Studio
-    alanEventEmitter.addListener('onCommand', (data) => {
-      console.log(`onCommand: ${JSON.stringify(data)}`);
+// Define the App component
+export default function App() {
+  // Use the useEffect hook to run the enclosed function once when the component mounts
+  useEffect(() => {
+    // Initialize the Alan button with the provided API key and set a command listener
+    alanBtn({
+      key: alanKey,
+      onCommand: ({ command }) => {
+        // Check if the received command is 'testCommand', and if so, display an alert
+        if (command === 'testCommand') {
+          alert('This code was executed');
+        }
+      }
     });
-  }
-  
-  componentWillUnmount() {
-    alanEventEmitter.removeAllListeners('onCommand');
-  }
-  
+  }, []);  // Moved the semicolon here
+  return <AppNavigator />;
 }
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
