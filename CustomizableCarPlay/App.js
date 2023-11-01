@@ -10,16 +10,16 @@ import firebaseConfig from "./lib/firebase";
 firebase.initializeApp(firebaseConfig);
 
 export default function App() {
-  return 
+  return(
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen options={ headerShown:false}} name="Login" component={login}/>
-      <Stack.Screen options={ headerShown:false}} name="Register" component={register}/>
-      <Stack.Screen options={ headerShown:false}} name="Landing" component={landing}/>
-      <Stack.Screen options={ headerShown:false}} name="Home" component={home}/>
-      </Stack.Navigator>
-      </NavigationContainer>
-      );
+      <Stack.Screen options={{ headerShown:false}} name="Login" component={login}/>
+      <Stack.Screen options={{ headerShown:false}} name="Register" component={register}/>
+      <Stack.Screen options={{ headerShown:false}} name="Landing" component={landing}/>
+      <Stack.Screen options={{ headerShown:false}} name="Home" component={home}/>
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 }
 
 const styles = StyleSheet.create({
