@@ -138,4 +138,8 @@ function Register({navigation}) {
     });
     // Styles remain the same
     
+<<<<<<< HEAD
     export default Register;
+=======
+    export default Register;
+>>>>>>> Dell's-branch

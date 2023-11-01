@@ -20,4 +20,8 @@ export default function Landing() {
       <StatusBar style="auto" />
     </View>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Dell's-branch

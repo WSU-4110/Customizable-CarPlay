@@ -10,4 +10,8 @@ export function isValidPassword(password) {
   // Add your password validation logic here
   // For example, check if the password is at least 8 characters long
   return password.length >= 8;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Dell's-branch

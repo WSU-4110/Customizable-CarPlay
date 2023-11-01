@@ -35,4 +35,8 @@ export const Footer = () => {
       </FooterItem>
     </FooterBar>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> Dell's-branch

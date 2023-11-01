@@ -33,4 +33,8 @@ const DraggableIcon = ({ source, initialPosition = { x: 0, y: 0 } }) => {
     </Animated.View>
   );
 };
+<<<<<<< HEAD
 export default DraggableIcon;
+=======
+export default DraggableIcon;
+>>>>>>> Dell's-branch

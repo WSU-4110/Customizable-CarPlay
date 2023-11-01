@@ -36,4 +36,8 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   color: #000000;
   font-size: 18px;
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> Dell's-branch
