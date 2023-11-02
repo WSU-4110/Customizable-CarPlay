@@ -2,11 +2,6 @@ import React from "react";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
-import  {ThemeProvider, ThemeContext} from '../util/ThemeManager';
-// import { ThemeContext } from "styled-components";
-import { useNavigation } from '@react-navigation/native';
-
-
 
 
 const FooterBar = styled.View`
@@ -27,9 +22,7 @@ export const Footer = () => {
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
- const ToggleButton = () =>{
-  const {toggleTheme} = React.useContext(ThemeContext);
- }
+ 
 
   return (
     <FooterBar>
