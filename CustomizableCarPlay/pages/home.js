@@ -18,16 +18,12 @@ import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
 import SecondBackgroundImage from "../images/pacmanBG.png";
 
-
-
 function Home() {
   const [layout, setLayout] = useState("layoutOne");
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
   };
- 
-
 
   const toggleLayout = () => {
     if (layout === "layoutOne") {
@@ -44,12 +40,27 @@ function Home() {
   return (
     <ImageBackground source={getBackgroundImage()} style={{ flex: 1 }}>
       <CenteredView>
-        <DraggableIcon source={spotifyIcon} />
-        <DraggableIcon source={instagramIcon} />
-        <DraggableIcon source={mapIcon} />
-        <DraggableIcon source={tikTokIcon} />
-        <DraggableIcon source={weatherIcon} />
-        <DraggableIcon source={whatsAppIcon} />
+        <DraggableIcon
+          source={spotifyIcon}
+          initialPosition={{ x: -170, y: 80 }}
+        />
+        <DraggableIcon
+          source={instagramIcon}
+          initialPosition={{ x: -170, y: 120 }}
+        />
+        <DraggableIcon source={mapIcon} initialPosition={{ x: -170, y: 160 }} />
+        <DraggableIcon
+          source={tikTokIcon}
+          initialPosition={{ x: -170, y: 200 }}
+        />
+        <DraggableIcon
+          source={weatherIcon}
+          initialPosition={{ x: -170, y: 240 }}
+        />
+        <DraggableIcon
+          source={whatsAppIcon}
+          initialPosition={{ x: -170, y: 280 }}
+        />
         <View
           style={{ flex: 1, justifyContent: "flex-end", marginBottom: 150 }}
         >
