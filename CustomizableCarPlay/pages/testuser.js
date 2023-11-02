@@ -1,15 +1,19 @@
-import { collection, addDoc } from "firebase/firestore"; 
-import db from "../lib/firebase"
-export const addDataToFirestore = async () => {
+import { collection, addDoc, getFirestore } from "firebase/firestore"; 
+import db from "../lib/firebase";
+import {app} from "../lib/firebase";
 
-try {
-  const docRef = await addDoc(collection(db, "users"), {
+export const testuser= async()=> {
+  const db= getFirestore(app);
+  
+  try {
+  const docRef = await addDoc(collection(db, "users"), 
+  {
     first: "Ada",
     last: "Lovelace",
-    born: 1815
+    born: 1815,
   });
   console.log("Document written with ID: ", docRef.id);
-} catch (e) {
+  }catch (e) {
   console.error("Error adding document: ", e);
-}
-}
+  }
+};
