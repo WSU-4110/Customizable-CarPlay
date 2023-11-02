@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
+
 import Sidebar from "./customSideBar";
+
 
 const FooterBar = styled.View`
   flex-direction: row;
@@ -24,6 +26,9 @@ export const Footer = () => {
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
+ const ToggleButton = () =>{
+  const {toggleTheme} = React.useContext(ThemeContext);
+ }
 
   const toggleSidebar = () => {
     setSidebarVisible((prevVisible) => !prevVisible);

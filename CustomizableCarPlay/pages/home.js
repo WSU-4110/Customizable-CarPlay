@@ -17,13 +17,21 @@ import weatherIcon from "../images/weatherIcon.png";
 import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
 import SecondBackgroundImage from "../images/pacmanBG.png";
+import { ThemeManager } from '../util/ThemeManager';
+
+ 
+
 
 function Home() {
   const [layout, setLayout] = useState("layoutOne");
+  const [theme, setTheme] = React.useState('light');
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
   };
+  
+  
+
 
   const toggleLayout = () => {
     if (layout === "layoutOne") {
@@ -32,6 +40,17 @@ function Home() {
       setLayout("layoutOne");
     }
   };
+
+
+const toggleTheme = () => {
+    if (theme === 'light'){
+        setTheme('dark');
+    } else{
+        setTheme('light');
+    }
+   
+};
+ 
 
   const getBackgroundImage = () => {
     return layout === "layoutOne" ? BackgroundImage : SecondBackgroundImage;
@@ -55,7 +74,7 @@ function Home() {
         </View>
       </CenteredView>
       <TouchableOpacity
-        onPress={toggleLayout}
+        onPress={toggleTheme}
         style={{ position: "absolute", right: 10, top: 10, padding: 10 }}
       >
         <WhiteText style={{ fontSize: 14 }}>Swap Layout</WhiteText>
@@ -65,4 +84,9 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home 
+ 
+
+  
+  
+  
