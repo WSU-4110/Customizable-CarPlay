@@ -12,8 +12,9 @@ const Stack = createStackNavigator();
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Register">
-        <Stack.Screen name="Register" component={Register} />
+      <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen options={{headerShown: false}}name="Login" component={Login} />
+        <Stack.Screen options={{headerShown: false}}name="Register" component={Register} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>

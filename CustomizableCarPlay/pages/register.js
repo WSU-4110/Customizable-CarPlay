@@ -1,141 +1,144 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-// Import the validation functions
-import { isValidEmail, isValidPassword } from './validation'; // Adjust the import path if needed
+import { View, Text, TextInput, Button, StyleSheet, KeyboardAvoidingView,
+  TouchableOpacity } from 'react-native';
+//import styled from "styled-components/native";
+import { doc, setDoc } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app, db } from '../lib/firebase';
 
-function Register({navigation}) {
+const Register = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
 
-  // Define error message states
-  const [emptyFieldError, setEmptyFieldError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const handleRegistration = async () => {
+    try {
+      const auth = getAuth(app);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-  // State to track whether registration is completed
-  const [registrationCompleted, setRegistrationCompleted] = useState(false);
+      const usersCollection = collection(db, 'users'); // Replace 'users' with your Firestore collection name
+      const userDoc = doc(usersCollection, user.uid);
 
-  // Handle registration logic here
-  const handleRegister = () => {
-      // Reset error messages
-      setEmptyFieldError('');
-      setEmailError('');
-      setPasswordError('');
+      const userData = {
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        displayName: 'User Display Name', // Replace with actual user display name
+        // Add more user-related data here
+      };
 
-      if (!firstName || !lastName || !email || !phoneNumber || !password) {
-        // Handle empty fields
-        setEmptyFieldError('All fields are required');
-      } else if (!isValidEmail(email)) {
-        // Handle invalid email format
-        setEmailError('Invalid email format');
-      } else if (!isValidPassword(password)) {
-        // Handle invalid password format
-        setPasswordError('Password must be at least 8 characters long');
-      } else {
-        // Proceed with registration
-        // Clear any previous error messages if needed
-        setEmptyFieldError('');
-        setEmailError('');
-        setPasswordError('');
+      await setDoc(userDoc, userData);
 
-        // Mark registration as completed
-        setRegistrationCompleted(true);
-      }
-    };
-    
-    // Function to handle skipping registration
-    const handleSkipRegistration = () => {
-    navigation.navigate('Landing');
-    };
-    return (
-      <View style={styles.container}>
-        {registrationCompleted ? (
-          // Render a different component or navigate to the next page
-          <Text>Registration Completed</Text>
-        ) : (
-          // Registration form
-          <>
-            <Text>Registration</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="First Name"
-              value={firstName}
-              onChangeText={(text) => setFirstName(text)}
-            />
-            {emptyFieldError ? (
-              <>
-                <Text style={styles.errorText}>{emptyFieldError}</Text>
-                <Text style={styles.errorText}>{invalidNameError}</Text>
-              </>
-            ) : null}
-            <TextInput
-              style={styles.input}
-              placeholder="Last Name"
-              value={lastName}
-              onChangeText={text => setLastName(text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Email"
-              value={email}
-              onChangeText={text => setEmail(text)}
-              keyboardType="email-address"
-            />
-            {emailError ? <><Text style={styles.errorText}>{emailError}</Text><Text style={styles.errorText}>{invalidEmailError}</Text></> : null}
-
-            <TextInput
-              style={styles.input}
-              placeholder="Phone Number"
-              value={phoneNumber}
-              onChangeText={text => setPhoneNumber(text)}
-              keyboardType="phone-pad"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              value={password}
-              onChangeText={text => setPassword(text)}
-              secureTextEntry
-            />
-            {passwordError ? <><Text style={styles.errorText}>{passwordError}</Text><Text style={styles.errorText}>{invalidPasswordError}</Text></> : null}
-
-    
-            {/* Other input fields and error messages go here */}
-    
-            <Button title="Register" onPress={handleRegister} />
-            <Button title="Skip" onPress={handleSkipRegistration} />
-            </>
-          )}
-        </View>
-      );
+      console.log('Registration successful for', user.email);
+      navigation.navigate('Login');
+    } catch (error) {
+      console.error('Registration failed:', error);
+      navigation.navigate('Register');
     }
-    
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-      },
-      input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 4,
-        marginBottom: 12,
-        padding: 8,
-      },
-      // Error message style
-      errorText: {
-        color: 'red', // Set the text color to red
-        fontSize: 14,   // Define the font size
-        marginBottom: 8,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        // You can add more styles as needed (e.g., textAlign, fontWeight, etc.)
-      },
-    });
-    // Styles remain the same
-    
-    export default Register;
+  };
+
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior="padding"
+    >
+    <View style={styles.container}>
+      <Text>Register</Text>
+      <TextInput
+        placeholder="First Name"
+        value={firstName}
+        onChangeText={setFirstName}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Last Name"
+        value={lastName}
+        onChangeText={setLastName}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Phone Number"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
+        keyboardType="phone-pad"
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        style={styles.input}
+        secureTextEntry
+      />
+    </View>
+
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={handleRegistration}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Register</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  </KeyboardAvoidingView>
+  );
+}
+
+export default Register;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    //padding: 16,
+  },
+  input: {
+    height: 48,
+    width: 300, // Adjust the width as needed
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    backgroundColor: 'white',
+    marginVertical: 10,
+    padding: 10,
+  },
+  buttonContainer: {
+    marginTop: -20,
+  },
+  button: {
+    width: 200, // Adjust the width as needed
+    height: 48,
+    borderRadius: 5,
+    backgroundColor: '#007AFF', // Button background color
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  // Error message style
+  errorText: {
+    color: 'red', // Set the text color to red
+    fontSize: 14,   // Define the font size
+    marginBottom: 8,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    // You can add more styles as needed (e.g., textAlign, fontWeight, etc.)
+  },
+});
+// Styles remain the same
+ 
