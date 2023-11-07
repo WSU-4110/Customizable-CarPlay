@@ -1,6 +1,7 @@
 import { Animated, Text } from "react-native";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import styled from "styled-components/native";
+import LayoutContext from "./LayoutContext";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -28,6 +29,18 @@ const CustomizeText = styled.Text`
   font-family: System;
 `;
 
+const SidebarButton = styled.TouchableOpacity`
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #333;
+`;
+
+const SidebarButtonText = styled.Text`
+  color: white;
+  font-size: 18px;
+`;
+
 const HorizontalLine = styled.View`
   height: 2px;
   background-color: white;
@@ -36,32 +49,29 @@ const HorizontalLine = styled.View`
 `;
 
 const Sidebar = ({ isVisible, onClose }) => {
-  // Initialize the animated value
-  // start off screen
+  const { toggleLayout } = useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
 
   useEffect(() => {
-    if (isVisible) {
-      // once button click or isVisible == true, start animation
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      // if !isVisible bring sidebar back
-      Animated.timing(slideAnim, {
-        toValue: -250,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    }
+    Animated.timing(slideAnim, {
+      toValue: isVisible ? 0 : -250,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
   }, [isVisible]);
+
+  const handleBackgroundSwap = () => {
+    toggleLayout();
+    onClose();
+  };
 
   return (
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
+      <SidebarButton onPress={handleBackgroundSwap}>
+        <SidebarButtonText>Swap Background</SidebarButtonText>
+      </SidebarButton>
     </SidebarWrapper>
   );
 };
