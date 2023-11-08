@@ -32,13 +32,13 @@ export const Footer = () => {
   return (
     <>
       <FooterBar>
-        <FooterItem onPress={toggleSidebar}>
+        <FooterItem onPress={toggleSidebar} testID="toggle-sidebar-button">
           <Icon name="create-outline" size={30} color="#000000" />
         </FooterItem>
-        <FooterItem onPress={showPlaceholderAlert}>
+        <FooterItem onPress={showPlaceholderAlert} testID="sidebar-toggle">
           <Icon name="person-outline" size={30} color="#000000" />
         </FooterItem>
-        <FooterItem onPress={showPlaceholderAlert}>
+        <FooterItem onPress={showPlaceholderAlert} testID="sidebar-toggle">
           <Icon name="chatbubbles-outline" size={30} color="#000000" />
         </FooterItem>
       </FooterBar>

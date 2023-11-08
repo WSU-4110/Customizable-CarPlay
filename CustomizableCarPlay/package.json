@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -25,7 +26,18 @@
     "styled-components": "^6.0.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^12.3.2",
+    "jest-expo": "^49.0.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.[jt]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@react-native|react-native)/)"
+    ]
   },
   "private": true
 }

@@ -39,6 +39,7 @@ function Home() {
       source={getBackgroundImage()}
       style={{ flex: 1 }}
       key={layout}
+      testId="background-image"
     >
       <CenteredView>
         <DraggableIcon

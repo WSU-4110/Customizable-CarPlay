@@ -66,7 +66,7 @@ const Sidebar = ({ isVisible, onClose }) => {
   };
 
   return (
-    <SidebarWrapper style={{ left: slideAnim }}>
+    <SidebarWrapper style={{ left: slideAnim }} testID="sidebar-wrapper">
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
       <SidebarButton onPress={handleBackgroundSwap}>
