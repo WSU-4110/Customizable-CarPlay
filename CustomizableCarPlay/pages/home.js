@@ -16,7 +16,6 @@ import tikTokIcon from "../images/TikTokIcon.png";
 import weatherIcon from "../images/weatherIcon.png";
 import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
-import SecondBackgroundImage from "../images/pacmanBG.png";
 
 function Home() {
   const [layout, setLayout] = useState("layoutOne");
