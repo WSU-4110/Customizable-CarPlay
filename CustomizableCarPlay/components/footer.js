@@ -4,8 +4,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
 import Sidebar from "./customSideBar";
 
-
-
 const FooterBar = styled.View`
   flex-direction: row;
   justify-content: space-around;
@@ -26,7 +24,6 @@ export const Footer = () => {
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
- 
 
   const toggleSidebar = () => {
     setSidebarVisible((prevVisible) => !prevVisible);

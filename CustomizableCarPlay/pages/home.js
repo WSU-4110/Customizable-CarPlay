@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
 import { ImageBackground, TouchableOpacity, Text, View } from "react-native";
@@ -17,28 +17,29 @@ import weatherIcon from "../images/weatherIcon.png";
 import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
 import SecondBackgroundImage from "../images/pacmanBG.png";
+import LayoutContext from "../components/LayoutContext";
 
 function Home() {
-  const [layout, setLayout] = useState("layoutOne");
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const { layout, toggleLayout } = useContext(LayoutContext);
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
   };
 
-  const toggleLayout = () => {
-    if (layout === "layoutOne") {
-      setLayout("layoutTwo");
-    } else {
-      setLayout("layoutOne");
-    }
-  };
-
   const getBackgroundImage = () => {
-    return layout === "layoutOne" ? BackgroundImage : SecondBackgroundImage;
+    const image =
+      layout === "layoutOne" ? BackgroundImage : SecondBackgroundImage;
+    console.log(`Current background image: ${image}`);
+    return image;
   };
 
   return (
-    <ImageBackground source={getBackgroundImage()} style={{ flex: 1 }}>
+    <ImageBackground
+      source={getBackgroundImage()}
+      style={{ flex: 1 }}
+      key={layout}
+    >
       <CenteredView>
         <DraggableIcon
           source={spotifyIcon}
@@ -69,12 +70,7 @@ function Home() {
           </Button>
         </View>
       </CenteredView>
-      <TouchableOpacity
-        onPress={toggleLayout}
-        style={{ position: "absolute", right: 10, top: 10, padding: 10 }}
-      >
-        <WhiteText style={{ fontSize: 14 }}>Swap Layout</WhiteText>
-      </TouchableOpacity>
+
       <Footer />
     </ImageBackground>
   );
