@@ -31,20 +31,19 @@ export const Footer = () => {
 
   return (
     <>
-      <FooterBar testID="footer-bar">
-        <FooterItem onPress={toggleSidebar} testID="custom-sidebar1">
+      <FooterBar>
+        <FooterItem onPress={toggleSidebar} testID="toggle-sidebar-button">
           <Icon name="create-outline" size={30} color="#000000" />
         </FooterItem>
         <FooterItem onPress={showPlaceholderAlert} testID="sidebar-toggle">
           <Icon name="person-outline" size={30} color="#000000" />
         </FooterItem>
-        <FooterItem onPress={showPlaceholderAlert} testID="footer-item">
+        <FooterItem onPress={showPlaceholderAlert} testID="sidebar-toggle">
           <Icon name="chatbubbles-outline" size={30} color="#000000" />
         </FooterItem>
       </FooterBar>
 
       <Sidebar
-        testID="custom-sidebar"
         isVisible={sidebarVisible}
         onClose={() => setSidebarVisible(false)}
       />
