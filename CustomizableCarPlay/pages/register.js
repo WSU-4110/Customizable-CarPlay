@@ -7,6 +7,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { collection } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app, db } from '../lib/firebase';
+import { useNavigation } from "@react-navigation/native";
 
 const Register = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -70,6 +71,10 @@ const Register = ({navigation}) => {
     setPhoneNumber(formatPhoneNumber(value));
   };
 
+  const navigateToVehicleInfo = () => {
+    navigation.navigate("VehicleInfo");
+
+  }
   const handleVehicleInfoSubmit =  async(userId, vehicleInfo)=> {
     if (carMake && carModel && carYear && carState && carPlate) {
     try{
@@ -137,7 +142,7 @@ const Register = ({navigation}) => {
             secureTextEntry
           />
           <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={handleUserRegistration}>
+            <TouchableOpacity onPress={navigateToVehicleInfo}>
               <View style={styles.button}>
                 <Text style={styles.buttonText}>Next</Text>
               </View>

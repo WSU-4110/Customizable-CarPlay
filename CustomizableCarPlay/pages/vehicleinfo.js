@@ -2,72 +2,69 @@ import React, { useState } from 'react';
 import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-const VehicleInfo = ({ onCarInfoSubmit, onAddAnotherVehicle }) => {
-  const [carMake, setCarMake] = useState('');
-  const [carModel, setCarModel] = useState('');
-  const [carYear, setCarYear] = useState('');
-  const [carState, setCarState] = useState('');
-  const [carPlate, setCarPlate] = useState('');
+const VehicleInfo = ({ onVehicleInfoSubmit, onAddAnotherVehicle }) => {
+  const [vehicleMake, setVehicleMake] = useState('');
+  const [vehicleModel, setVehicleModel] = useState('');
+  const [vehicleYear, setVehicleYear] = useState('');
+  const [vehicleState, setVehicleState] = useState('');
+  const [vehiclePlate, setVehiclePlate] = useState('');
 
   const handleVehicleInfoSubmit = () => {
-    // Assuming validation passes, gather car information into an object
-    const carInfo = {
-      make: carMake,
-      model: carModel,
-      year: carYear,
-      stateRegistered: carState,
-      plateNumber: carPlate,
+    const vehicleInfo = {
+      make: vehicleMake,
+      model: vehicleModel,
+      year: vehicleYear,
+      stateRegistered: vehicleState,
+      plateNumber: vehiclePlate,
     };
 
-    // Pass the car information back to the parent component
-    onCarInfoSubmit(carInfo);
+    onVehicleInfoSubmit(vehicleInfo);
   };
 
   const handleAddVehicle = () => {
-    const carInfo = {
-      make: carMake,
-      model: carModel,
-      year: carYear,
-      stateRegistered: carState,
-      plateNumber: carPlate,
+    const vehicleInfo = {
+      make: vehicleMake,
+      model: vehicleModel,
+      year: vehicleYear,
+      stateRegistered: vehicleState,
+      plateNumber: vehiclePlate,
     };
 
-    onAddAnotherVehicle(carInfo);
+    onAddAnotherVehicle(vehicleInfo);
 
-    // Clear the input fields for the next vehicle
-    setCarMake('');
-    setCarModel('');
-    setCarYear('');
-    setCarState('');
-    setCarPlate('');
+    setVehicleMake('');
+    setVehicleModel('');
+    setVehicleYear('');
+    setVehicleState('');
+    setVehiclePlate('');
   };
 
   return (
     <View style={styles.container}>
-      <Text>Car Information</Text>
+      <Text>Vehicle Information</Text>
       <TextInput
-        placeholder="Car Make"
-        value={carMake}
-        onChangeText={setCarMake}
+        placeholder="Vehicle Make"
+        value={vehicleMake}
+        onChangeText={setVehicleMake}
         style={styles.input}
       />
       <TextInput
-        placeholder="Car Model"
-        value={carModel}
-        onChangeText={setCarModel}
+        placeholder="Vehicle Model"
+        value={vehicleModel}
+        onChangeText={setVehicleModel}
         style={styles.input}
       />
       <TextInput
-        placeholder="Car Year"
-        value={carYear}
-        onChangeText={setCarYear}
+        placeholder="Vehicle Year"
+        value={vehicleYear}
+        onChangeText={setVehicleYear}
         keyboardType="numeric"
         style={styles.input}
       />
       <Picker
-      selectedValue={carState}
-      style={styles.input}
-      onValueChange={(itemValue) => setCarState(itemValue)}
+        selectedValue={vehicleState}
+        style={styles.input}
+        onValueChange={(itemValue) => setVehicleState(itemValue)}
       >
         <Picker.Item label="Select State" value="" />
         <Picker.Item label="AL" value="AL" />
@@ -121,17 +118,17 @@ const VehicleInfo = ({ onCarInfoSubmit, onAddAnotherVehicle }) => {
         <Picker.Item label="WI" value="WI" />
         <Picker.Item label="AL" value="AL" />
         <Picker.Item label="WY" value="WY" />
-      </Picker>
+        </Picker>
       <TextInput
-        placeholder="Car Plate"
-        value={carPlate}
-        onChangeText={setCarPlate}
+        placeholder="Vehicle Plate"
+        value={vehiclePlate}
+        onChangeText={setVehiclePlate}
         keyboardType="numeric"
         style={styles.input}
       />
       <TouchableOpacity onPress={handleVehicleInfoSubmit}>
         <View style={styles.button}>
-          <Text style={styles.buttonText}>Submit Car Info</Text>
+          <Text style={styles.buttonText}>Submit Vehicle Info</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleAddVehicle}>
@@ -144,35 +141,7 @@ const VehicleInfo = ({ onCarInfoSubmit, onAddAnotherVehicle }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    height: 48,
-    width: 300,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    backgroundColor: 'white',
-    marginVertical: 10,
-    padding: 10,
-  },
-  button: {
-    width: 200,
-    height: 48,
-    borderRadius: 5,
-    backgroundColor: '#007AFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  // ... (styles remain the same)
 });
 
 export default VehicleInfo;
