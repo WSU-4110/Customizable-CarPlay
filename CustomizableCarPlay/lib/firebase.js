@@ -1,6 +1,9 @@
 import { initializeApp } from "firebase/app";
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+//import { db } from './firebase';
 
 /*
 const firebaseConfig = {
@@ -21,10 +24,27 @@ const firebaseConfig = {
   appId: "1:17748607274:web:1c55289dd428b8ed069e53"
 };
 
+const addVehicleForCurrentUser = async (userId, vehicleData) => {
+  try {
+    // Reference to the 'vehicles' collection for the current user
+    const userVehiclesRef = collection(firestoreDB, 'users', userId, 'vehicles');
+
+    // Add the vehicle data to the 'vehicles' collection
+    await addDoc(userVehiclesRef, vehicleData);
+
+    console.log('Vehicle information added for the current user.');
+  } catch (error) {
+    console.error('Error adding vehicle information:', error);
+  }
+};
+
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+//const auth = getAuth(app);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
+const firestoreDB = getFirestore(app);
 
-export { app, auth, db };
+export { app, auth, firestoreDB as db, addVehicleForCurrentUser };
 

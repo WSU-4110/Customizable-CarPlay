@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import VehicleInfo from './vehicleinfo';
 import { View, Text, TextInput, Button, StyleSheet, KeyboardAvoidingView,
   TouchableOpacity } from 'react-native';
 //import styled from "styled-components/native";
@@ -13,15 +14,28 @@ const Register = ({navigation}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [vehicles, setVehicles] = useState([]);
+  const [carMake, setCarMake] = useState('');
+  const [carModel, setCarModel] = useState('');
+  const [carYear, setCarYear] = useState('');
+  const [carState, setCarState] = useState('');
+  const [carPlate, setCarPlate] = useState('');
 
-  const handleRegistration = async () => {
+  const [registrationStep, setRegistrationStep] = useState(1);
+  const [userCompleted, setUserCompleted] = useState(false);
+  const [vehicleCompleted, setVehicleCompleted] = useState(false);
+
+  const handleUserRegistration = async () => {
+    if (firstName && lastName && phoneNumber && email && password) {
     try {
       const auth = getAuth(app);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      
 
       const usersCollection = collection(db, 'users'); // Replace 'users' with your Firestore collection name
       const userDoc = doc(usersCollection, user.uid);
+      const userId = user.uid;
 
       const userData = {
         firstName: firstName,
@@ -34,65 +48,122 @@ const Register = ({navigation}) => {
       await setDoc(userDoc, userData);
 
       console.log('Registration successful for', user.email);
-      navigation.navigate('Login');
+      setUserCompleted(true);
+
+      setRegistrationStep(2);
     } catch (error) {
       console.error('Registration failed:', error);
       navigation.navigate('Register');
     }
+  } else {
+    console.error('Please fill out all user fields');
+  }
+  };
+
+  const formatPhoneNumber = (value) => {
+    const cleaned = value.replace(/\D/g, '');
+    const formatted = `(${cleaned.substring(0, 3)}) ${cleaned.substring(3, 6)}-${cleaned.substring(6, 10)}`;
+    return formatted;
+  };
+
+  const handlePhoneNumberChange = (value) => {
+    setPhoneNumber(formatPhoneNumber(value));
+  };
+
+  const handleVehicleInfoSubmit =  async(userId, vehicleInfo)=> {
+    if (carMake && carModel && carYear && carState && carPlate) {
+    try{
+      await addVehicleForCurrentUser(userId, vehicleInfo);
+
+      setVehicles([...vehicles, vehicleInfo]);
+      setVehicleCompleted(true);
+      if (userCompleted && vehicleCompleted) {
+        // Redirect to login page after successful registration
+        navigation.navigate('Login');
+      //navigation.navigate('Login');
+      }
+    }catch(error){
+      console.error('Error adding vehicle information:', error);
+    }
+  } else {
+    console.error('Please fill out all vehicle fields');
+  }
+  };
+
+  const handleAddAnotherVehicle = () => {
+    // Clear the vehicle information fields for the next vehicle
+    setCarMake('');
+    setCarModel('');
+    setCarYear('');
+    setCarState('');
+    setCarPlate('');
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior="padding"
-    >
-    <View style={styles.container}>
-      <Text>Register</Text>
-      <TextInput
-        placeholder="First Name"
-        value={firstName}
-        onChangeText={setFirstName}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Last Name"
-        value={lastName}
-        onChangeText={setLastName}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Phone Number"
-        value={phoneNumber}
-        onChangeText={setPhoneNumber}
-        keyboardType="phone-pad"
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        style={styles.input}
-        secureTextEntry
-      />
-    </View>
-
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity onPress={handleRegistration}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Register</Text>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
+      {registrationStep === 1 ? (
+        <View style={styles.container}>
+          <Text>Register</Text>
+          <TextInput
+            placeholder="First Name"
+            value={firstName}
+            onChangeText={setFirstName}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Last Name"
+            value={lastName}
+            onChangeText={setLastName}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChangeText={handlePhoneNumberChange}
+            keyboardType="phone-pad"
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            style={styles.input}
+            secureTextEntry
+          />
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity onPress={handleUserRegistration}>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Next</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-      </TouchableOpacity>
-    </View>
-  </KeyboardAvoidingView>
+      ) : registrationStep === 2 ? (
+        <VehicleInfo 
+        carMake={carMake}
+        setCarMake={setCarMake}
+        carModel={carModel}
+        setCarModel={setCarModel}
+        carYear={carYear}
+        setCarYear={setCarYear}
+        carState={carState}
+        setCarState={setCarState}
+        carPlate={carPlate}
+        setCarPlate={setCarPlate}
+
+        onCarInfoSubmit={handleVehicleInfoSubmit}
+        onAddAnotherVehicle={handleAddAnotherVehicle} 
+        />
+      ) : null}
+    </KeyboardAvoidingView>
   );
 }
-
 export default Register;
 
 const styles = StyleSheet.create({
