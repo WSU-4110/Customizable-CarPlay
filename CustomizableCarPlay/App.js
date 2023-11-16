@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LayoutContext from "./components/LayoutContext";
+import LayoutWithVoiceButton from './LayoutWithVoiceButton';
 
 import AppNavigator from "./navigator";
 import { StatusBar } from "expo-status-bar";
@@ -17,9 +18,12 @@ export default function App() {
   return (
     <LayoutContext.Provider value={{ layout, toggleLayout }}>
       <StatusBar style="auto" />
-      <AppNavigator />
+      <LayoutWithVoiceButton>
+        <AppNavigator />
+      </LayoutWithVoiceButton>
     </LayoutContext.Provider>
   );
+
 }
 
 const styles = StyleSheet.create({
