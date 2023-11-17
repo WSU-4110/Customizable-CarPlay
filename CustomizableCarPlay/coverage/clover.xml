@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700195152101" clover="3.2.0">
-  <project timestamp="1700195152101" name="All files">
+<coverage generated="1700196087020" clover="3.2.0">
+  <project timestamp="1700196087020" name="All files">
     <metrics statements="151" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="40" coveredmethods="0" elements="214" coveredelements="0" complexity="0" loc="151" ncloc="151" packages="5" files="16" classes="16"/>
     <package name="CustomizableCarPlay">
       <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
