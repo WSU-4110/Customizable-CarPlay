@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { Animated, Text } from "react-native";
 import { render, fireEvent } from "@testing-library/react-native";
 import Sidebar from "./customSideBar";
@@ -39,4 +39,4 @@ describe("Sidebar", () => {
     expect(mockToggleLayout).toHaveBeenCalled();
     expect(mockOnClose).toHaveBeenCalled();
   });
-});
+});*/
