@@ -80,6 +80,7 @@ const Sidebar = ({ isVisible, onClose }) => {
           height: 40,
           backgroundColor: "#333333",
           color: "white",
+          marginTop: 10,
         }}
       >
         <Picker.Item label="Default" value="Default" />
