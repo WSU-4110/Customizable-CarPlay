@@ -1,8 +1,23 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 
-const LayoutContext = React.createContext({
+const LayoutContext = createContext({
   layout: "layoutOne",
-  toggleLayout: () => {},
+  setLayout: () => {},
+  footerColor: "#ffffff",
+  setFooterColor: () => {},
 });
+
+export const LayoutProvider = ({ children }) => {
+  const [layout, setLayout] = useState("layoutOne");
+  const [footerColor, setFooterColor] = useState("#ffffff");
+
+  return (
+    <LayoutContext.Provider
+      value={{ layout, setLayout, footerColor, setFooterColor }}
+    >
+      {children}
+    </LayoutContext.Provider>
+  );
+};
 
 export default LayoutContext;

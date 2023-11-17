@@ -2,6 +2,7 @@ import { Animated, Text } from "react-native";
 import React, { useRef, useEffect, useContext } from "react";
 import styled from "styled-components/native";
 import LayoutContext from "./LayoutContext";
+import { Picker } from "@react-native-picker/picker";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -36,9 +37,10 @@ const SidebarButton = styled.TouchableOpacity`
   background-color: #333;
 `;
 
-const SidebarButtonText = styled.Text`
+const SidebarText = styled.Text`
   color: white;
-  font-size: 18px;
+  font-size: 12px;
+  margin-top: 10px;
 `;
 
 const HorizontalLine = styled.View`
@@ -46,10 +48,12 @@ const HorizontalLine = styled.View`
   background-color: white;
   width: 60%;
   margin-top: 10px;
+  margin-bottom: 15px;
 `;
 
 const Sidebar = ({ isVisible, onClose }) => {
-  const { toggleLayout } = useContext(LayoutContext);
+  const { layout, setLayout, footerColor, setFooterColor } =
+    useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
 
   useEffect(() => {
@@ -60,8 +64,8 @@ const Sidebar = ({ isVisible, onClose }) => {
     }).start();
   }, [isVisible]);
 
-  const handleBackgroundSwap = () => {
-    toggleLayout();
+  const handleBackgroundChange = (newLayout) => {
+    setLayout(newLayout);
     onClose();
   };
 
@@ -69,9 +73,43 @@ const Sidebar = ({ isVisible, onClose }) => {
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
-      <SidebarButton onPress={handleBackgroundSwap}>
-        <SidebarButtonText>Swap Background</SidebarButtonText>
-      </SidebarButton>
+      <SidebarText>Choose Layout</SidebarText>
+      <Picker
+        selectedValue={layout}
+        onValueChange={(itemValue, itemIndex) =>
+          handleBackgroundChange(itemValue)
+        }
+        style={{
+          width: 200,
+          height: 40,
+          backgroundColor: "#333333",
+          color: "white",
+          marginTop: 10,
+        }}
+      >
+        <Picker.Item label="Default" value="Default" />
+        <Picker.Item label="Abstract" value="layoutOne" />
+        <Picker.Item label="Pacman" value="layoutTwo" />
+        <Picker.Item label="WSU" value="layoutThree" />
+      </Picker>
+      <SidebarText>Choose FooterColor</SidebarText>
+      <Picker
+        selectedValue={footerColor}
+        onValueChange={(itemValue) => setFooterColor(itemValue)}
+        style={{
+          width: 200,
+          height: 40,
+          backgroundColor: "#333333",
+          color: "white",
+          marginTop: 10,
+        }}
+      >
+        <Picker.Item label="White" value="#FFFFFF" />
+        <Picker.Item label="Orange" value="#FFA500" />
+        <Picker.Item label="Red" value="#FF0000" />
+        <Picker.Item label="Green" value="#00FF00" />
+        <Picker.Item label="Blue" value="#0000FF" />
+      </Picker>
     </SidebarWrapper>
   );
 };
