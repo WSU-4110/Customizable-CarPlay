@@ -1,6 +1,6 @@
 // Import your functions to be tested
-const { formatPhoneNumber } = require('../register');
-
+const { validateEmail } = require('../register');
+/*
 describe('formatPhoneNumber', () => {
   it('should format a 10-digit phone number properly', () => {
     // Test cases for formatPhoneNumber
@@ -10,7 +10,7 @@ describe('formatPhoneNumber', () => {
   // Add more test cases for formatPhoneNumber
 });
 
-/*
+*/
 describe('validateEmail', () => {
   it('should validate a correct email format', () => {
     // Test cases for validateEmail
@@ -19,7 +19,7 @@ describe('validateEmail', () => {
 
   // Add more test cases for validateEmail
 });
-
+/*
 describe('validatePassword', () => {
   it('should validate a strong password format', () => {
     // Test cases for validatePassword

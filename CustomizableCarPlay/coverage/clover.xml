@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700193761097" clover="3.2.0">
-  <project timestamp="1700193761098" name="All files">
-    <metrics statements="157" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="41" coveredmethods="0" elements="221" coveredelements="0" complexity="0" loc="157" ncloc="157" packages="5" files="16" classes="16"/>
+<coverage generated="1700195152101" clover="3.2.0">
+  <project timestamp="1700195152101" name="All files">
+    <metrics statements="151" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="40" coveredmethods="0" elements="214" coveredelements="0" complexity="0" loc="151" ncloc="151" packages="5" files="16" classes="16"/>
     <package name="CustomizableCarPlay">
       <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="App.js" path="/Users/morganshields-wykes/Documents/GitHub/Customizable-CarPlay/CustomizableCarPlay/App.js">
@@ -66,19 +66,13 @@
       </file>
     </package>
     <package name="CustomizableCarPlay.lib">
-      <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="firebase.js" path="/Users/morganshields-wykes/Documents/GitHub/Customizable-CarPlay/CustomizableCarPlay/lib/firebase.js">
-        <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="18" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
       </file>
     </package>
     <package name="CustomizableCarPlay.pages">
