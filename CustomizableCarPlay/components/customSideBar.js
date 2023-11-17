@@ -50,7 +50,8 @@ const HorizontalLine = styled.View`
 `;
 
 const Sidebar = ({ isVisible, onClose }) => {
-  const { layout, setLayout } = useContext(LayoutContext);
+  const { layout, setLayout, footerColor, setFooterColor } =
+    useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
 
   useEffect(() => {
