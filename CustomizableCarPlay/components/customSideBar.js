@@ -37,9 +37,10 @@ const SidebarButton = styled.TouchableOpacity`
   background-color: #333;
 `;
 
-const SidebarButtonText = styled.Text`
+const SidebarText = styled.Text`
   color: white;
-  font-size: 18px;
+  font-size: 12px;
+  margin-top: 10px;
 `;
 
 const HorizontalLine = styled.View`
@@ -47,6 +48,7 @@ const HorizontalLine = styled.View`
   background-color: white;
   width: 60%;
   margin-top: 10px;
+  margin-bottom: 15px;
 `;
 
 const Sidebar = ({ isVisible, onClose }) => {
@@ -71,6 +73,7 @@ const Sidebar = ({ isVisible, onClose }) => {
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
+      <SidebarText>Choose Layout</SidebarText>
       <Picker
         selectedValue={layout}
         onValueChange={(itemValue, itemIndex) =>
@@ -89,6 +92,7 @@ const Sidebar = ({ isVisible, onClose }) => {
         <Picker.Item label="Pacman" value="layoutTwo" />
         <Picker.Item label="WSU" value="layoutThree" />
       </Picker>
+      <SidebarText>Choose FooterColor</SidebarText>
       <Picker
         selectedValue={footerColor}
         onValueChange={(itemValue) => setFooterColor(itemValue)}
