@@ -18,6 +18,8 @@ import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
 import SecondBackgroundImage from "../images/pacmanBG.png";
 import LayoutContext from "../components/LayoutContext";
+import DefaultBackgroundImage from "../images/default.png";
+import WayneStateImage from "../images/wsu.png";
 
 function Home() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -28,8 +30,21 @@ function Home() {
   };
 
   const getBackgroundImage = () => {
-    const image =
-      layout === "layoutOne" ? BackgroundImage : SecondBackgroundImage;
+    let image;
+    switch (layout) {
+      case "Default":
+        image = DefaultBackgroundImage;
+        break;
+      case "layoutOne":
+        image = BackgroundImage;
+        break;
+      case "layoutTwo":
+        image = SecondBackgroundImage;
+        break;
+      case "layoutThree":
+        image = WayneStateImage;
+        break;
+    }
     console.log(`Current background image: ${image}`);
     return image;
   };

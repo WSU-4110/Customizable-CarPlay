@@ -8,7 +8,7 @@ const FooterBar = styled.View`
   flex-direction: row;
   justify-content: space-around;
   padding: 10px;
-  background-color: #a5432f;
+  background-color: #ffffff;
   position: absolute;
   bottom: 0;
   width: 100%;

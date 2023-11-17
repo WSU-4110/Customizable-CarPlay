@@ -2,6 +2,7 @@ import { Animated, Text } from "react-native";
 import React, { useRef, useEffect, useContext } from "react";
 import styled from "styled-components/native";
 import LayoutContext from "./LayoutContext";
+import { Picker } from "@react-native-picker/picker";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -49,7 +50,7 @@ const HorizontalLine = styled.View`
 `;
 
 const Sidebar = ({ isVisible, onClose }) => {
-  const { toggleLayout } = useContext(LayoutContext);
+  const { layout, setLayout } = useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
 
   useEffect(() => {
@@ -60,8 +61,8 @@ const Sidebar = ({ isVisible, onClose }) => {
     }).start();
   }, [isVisible]);
 
-  const handleBackgroundSwap = () => {
-    toggleLayout();
+  const handleBackgroundChange = (newLayout) => {
+    setLayout(newLayout);
     onClose();
   };
 
@@ -69,9 +70,23 @@ const Sidebar = ({ isVisible, onClose }) => {
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
-      <SidebarButton onPress={handleBackgroundSwap}>
-        <SidebarButtonText>Swap Background</SidebarButtonText>
-      </SidebarButton>
+      <Picker
+        selectedValue={layout}
+        onValueChange={(itemValue, itemIndex) =>
+          handleBackgroundChange(itemValue)
+        }
+        style={{
+          width: 200,
+          height: 40,
+          backgroundColor: "#333333",
+          color: "white",
+        }}
+      >
+        <Picker.Item label="Default" value="Default" />
+        <Picker.Item label="Abstract" value="layoutOne" />
+        <Picker.Item label="Pacman" value="layoutTwo" />
+        <Picker.Item label="WSU" value="layoutThree" />
+      </Picker>
     </SidebarWrapper>
   );
 };
