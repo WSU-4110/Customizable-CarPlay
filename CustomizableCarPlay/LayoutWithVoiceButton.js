@@ -25,6 +25,7 @@ const LayoutWithVoiceButton = ({ navigation, children }) => {
     // Problems at the moment navigation.navigate('Home');
   };
 
+
   return (
     <View style={{ flex: 1 }}>
       {children}
@@ -35,13 +36,14 @@ const LayoutWithVoiceButton = ({ navigation, children }) => {
       {showOptions && (
         <View style={styles.optionsContainer}>
           <TouchableOpacity onPress={openSpotify} style={styles.optionButton}>
-            <Text>Spotify</Text>
+            <Image source={require('./images/icons8-spotify-50.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={openGoogleMaps} style={styles.optionButton}>
-            <Text>Maps</Text>
+            <Image source={require('./images/icons8-google-maps-100.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={goToHomePage} style={styles.optionButton}>
-            <Text>Home</Text>
+            {/* Assuming you have an image for the home icon similar to the others */}
+            <Image source={require('./images/icons8-home-button-60.png')} style={styles.image} />
           </TouchableOpacity>
         </View>
       )}
