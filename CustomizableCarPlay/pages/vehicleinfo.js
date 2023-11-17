@@ -138,10 +138,54 @@ const VehicleInfo = ({ onVehicleInfoSubmit, onAddAnotherVehicle }) => {
       </TouchableOpacity>
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-  // ... (styles remain the same)
-});
+}
 
 export default VehicleInfo;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    //padding: 16,
+  },
+  input: {
+    height: 48,
+    width: 300, // Adjust the width as needed
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    backgroundColor: 'white',
+    marginVertical: 10,
+    padding: 10,
+  },
+  buttonContainer: {
+    marginTop: -20,
+  },
+  button: {
+    width: 200, // Adjust the width as needed
+    height: 30,
+    borderRadius: 5,
+    backgroundColor: '#007AFF', // Button background color
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  // Error message style
+  errorText: {
+    color: 'red', // Set the text color to red
+    fontSize: 14,   // Define the font size
+    marginBottom: 8,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    // You can add more styles as needed (e.g., textAlign, fontWeight, etc.)
+  },
+});
+// Styles remain the same
+ 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+/*import React, {useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text } from "react-native";
 import { StyledButton, StyledButtonText } from "../StyledComponents";
@@ -17,4 +17,18 @@ return (
       <StatusBar style="auto" />
     </View>
   );
- export default Colorz;
+ export default Colorz;*/
+ import React, { useState } from 'react';
+import { View, Button } from 'react-native';
+
+const CustomizedColor = () => {
+  const [bgColor, setBgColor] = useState('#FFF');
+
+  return (
+    <View style={{ flex: 1, backgroundColor: bgColor }}>
+      <Button title="Red" onPress={() => setBgColor('red')} />
+    </View>
+  );
+};
+
+export default CustomizedColor;
