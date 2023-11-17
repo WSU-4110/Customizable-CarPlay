@@ -89,6 +89,23 @@ const Sidebar = ({ isVisible, onClose }) => {
         <Picker.Item label="Pacman" value="layoutTwo" />
         <Picker.Item label="WSU" value="layoutThree" />
       </Picker>
+      <Picker
+        selectedValue={footerColor}
+        onValueChange={(itemValue) => setFooterColor(itemValue)}
+        style={{
+          width: 200,
+          height: 40,
+          backgroundColor: "#333333",
+          color: "white",
+          marginTop: 10,
+        }}
+      >
+        <Picker.Item label="White" value="#FFFFFF" />
+        <Picker.Item label="Orange" value="#FFA500" />
+        <Picker.Item label="Red" value="#FF0000" />
+        <Picker.Item label="Green" value="#00FF00" />
+        <Picker.Item label="Blue" value="#0000FF" />
+      </Picker>
     </SidebarWrapper>
   );
 };
