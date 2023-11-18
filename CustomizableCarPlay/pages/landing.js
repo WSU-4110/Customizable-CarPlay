@@ -39,7 +39,7 @@ export default function Landing() {
       onValueChange = {(value) => {
       setMode(value);
       EventRegister.emit("changeTheme",value );
-      }} />
+      }} testID="switch-testid" />
     </View>
   );
 }
