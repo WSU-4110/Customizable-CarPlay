@@ -26,10 +26,17 @@ describe('Vehicle Year Validation', () => {
     expect(validation.validateVehicleYear(validYear)).toBe(true);
   });
 });
-*/
+
 describe('Vehicle Plate Validation', () => {
   test('Invalid vehicle plate format', () => {
     const invalidPlate = 'AB@123';
     expect(validation.validateVehiclePlate(invalidPlate)).toBe(false);
+  });
+});
+*/
+describe('State Abbreviation Validation', () => {
+  test('Valid state abbreviation format', () => {
+    const validState = 'NY';
+    expect(validation.validateStateAbbreviation(validState)).toBe(true);
   });
 });
