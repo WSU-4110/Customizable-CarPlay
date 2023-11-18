@@ -19,10 +19,17 @@ describe('Password Validation', () => {
     expect(validation.validatePassword(invalidPassword)).toBe(false);
   });
 });
-*/
+
 describe('Vehicle Year Validation', () => {
   test('Valid vehicle year format', () => {
     const validYear = '2023';
     expect(validation.validateVehicleYear(validYear)).toBe(true);
+  });
+});
+*/
+describe('Vehicle Plate Validation', () => {
+  test('Invalid vehicle plate format', () => {
+    const invalidPlate = 'AB@123';
+    expect(validation.validateVehiclePlate(invalidPlate)).toBe(false);
   });
 });
