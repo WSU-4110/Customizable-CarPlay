@@ -38,6 +38,7 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(@react-native|react-native)/)"
     ]
+  
   },
   "private": true
 }
