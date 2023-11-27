@@ -1,7 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
-import { ImageBackground, TouchableOpacity, Text, View } from "react-native";
+import {
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  View,
+  Linking,
+} from "react-native";
 import {
   WhiteText,
   CenteredView,
@@ -27,6 +33,47 @@ function Home() {
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
+  };
+
+  const openSpotify = () => {
+    const url = "https://spotify.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open Spotify:", err);
+    });
+  };
+
+  const openWeather = () => {
+    const url = "https://www.weather.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const openTikTok = () => {
+    const url = "https://www.tiktok.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+  const openWhatsApp = () => {
+    const url = "https://www.whatsapp.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const openMaps = () => {
+    const url = "https://maps.google.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const Instagram = () => {
+    const url = "https://www.instagram.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
   };
 
   const getBackgroundImage = () => {
@@ -59,23 +106,32 @@ function Home() {
         <DraggableIcon
           source={spotifyIcon}
           initialPosition={{ x: -170, y: 80 }}
+          onPress={openSpotify}
         />
         <DraggableIcon
           source={instagramIcon}
           initialPosition={{ x: -170, y: 120 }}
+          onPress={Instagram}
         />
-        <DraggableIcon source={mapIcon} initialPosition={{ x: -170, y: 160 }} />
+        <DraggableIcon
+          source={mapIcon}
+          initialPosition={{ x: -170, y: 160 }}
+          onPress={openMaps}
+        />
         <DraggableIcon
           source={tikTokIcon}
           initialPosition={{ x: -170, y: 200 }}
+          onPress={openTikTok}
         />
         <DraggableIcon
           source={weatherIcon}
           initialPosition={{ x: -170, y: 240 }}
+          onPress={openWeather}
         />
         <DraggableIcon
           source={whatsAppIcon}
           initialPosition={{ x: -170, y: 280 }}
+          onPress={openWhatsApp}
         />
         <View
           style={{ flex: 1, justifyContent: "flex-end", marginBottom: 150 }}
