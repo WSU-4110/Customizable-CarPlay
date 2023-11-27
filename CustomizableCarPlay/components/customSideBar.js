@@ -47,10 +47,11 @@ const layoutPickerItems = [
 
 const footerColorPickerItems = [
   { label: "White", value: "#FFFFFF" },
-  { label: "Orange", value: "#FFA500" },
-  { label: "Red", value: "#FF0000" },
-  { label: "Green", value: "#00FF00" },
-  { label: "Blue", value: "#0000FF" },
+  { label: "Orange", value: "#F28500" },
+  { label: "Red", value: "#C21807" },
+  { label: "Green", value: "#228B22" },
+  { label: "Blue", value: "#007FFF" },
+  { label: "Yellow", value: "#FFD800" },
 ];
 
 const Sidebar = ({ isVisible, onClose }) => {
