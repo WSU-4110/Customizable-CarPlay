@@ -3,6 +3,8 @@ import React, { useRef, useEffect, useContext } from "react";
 import styled from "styled-components/native";
 import LayoutContext from "./LayoutContext";
 import { Picker } from "@react-native-picker/picker";
+import { Platform } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -12,13 +14,6 @@ const SidebarWrapper = styled(Animated.View)`
   width: 250px;
   background-color: black;
   align-items: center;
-
-  shadow-color: gray;
-  shadow-offset: 5px -5px;
-  shadow-opacity: 0.8;
-  shadow-radius: 5px;
-
-  elevation: 10;
 `;
 
 const CustomizeText = styled.Text`
@@ -28,13 +23,6 @@ const CustomizeText = styled.Text`
   padding-top: 20px;
   font-style: italic;
   font-family: System;
-`;
-
-const SidebarButton = styled.TouchableOpacity`
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #333;
 `;
 
 const SidebarText = styled.Text`
@@ -50,6 +38,20 @@ const HorizontalLine = styled.View`
   margin-top: 10px;
   margin-bottom: 15px;
 `;
+const layoutPickerItems = [
+  { label: "Default", value: "Default" },
+  { label: "Abstract", value: "layoutOne" },
+  { label: "Pacman", value: "layoutTwo" },
+  { label: "WSU", value: "layoutThree" },
+];
+
+const footerColorPickerItems = [
+  { label: "White", value: "#FFFFFF" },
+  { label: "Orange", value: "#FFA500" },
+  { label: "Red", value: "#FF0000" },
+  { label: "Green", value: "#00FF00" },
+  { label: "Blue", value: "#0000FF" },
+];
 
 const Sidebar = ({ isVisible, onClose }) => {
   const { layout, setLayout, footerColor, setFooterColor } =
@@ -69,47 +71,66 @@ const Sidebar = ({ isVisible, onClose }) => {
     onClose();
   };
 
+  const renderPicker = (selectedValue, onValueChange, items) => {
+    if (Platform.OS === "ios") {
+      return (
+        <RNPickerSelect
+          onValueChange={onValueChange}
+          items={items}
+          style={{
+            inputIOS: {
+              color: "white",
+              paddingTop: 13,
+              paddingHorizontal: 10,
+              paddingBottom: 12,
+              backgroundColor: "#333333",
+              width: 240,
+              marginTop: 4,
+            },
+          }}
+        />
+      );
+    } else {
+      return (
+        <Picker
+          selectedValue={selectedValue}
+          onValueChange={onValueChange}
+          style={{
+            width: 200,
+            height: 40,
+            backgroundColor: "#333333",
+            color: "white",
+            marginTop: 10,
+          }}
+        >
+          {items.map((item) => (
+            <Picker.Item
+              key={item.value}
+              label={item.label}
+              value={item.value}
+            />
+          ))}
+        </Picker>
+      );
+    }
+  };
+
   return (
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
       <SidebarText>Choose Layout</SidebarText>
-      <Picker
-        selectedValue={layout}
-        onValueChange={(itemValue, itemIndex) =>
-          handleBackgroundChange(itemValue)
-        }
-        style={{
-          width: 200,
-          height: 40,
-          backgroundColor: "#333333",
-          color: "white",
-          marginTop: 10,
-        }}
-      >
-        <Picker.Item label="Default" value="Default" />
-        <Picker.Item label="Abstract" value="layoutOne" />
-        <Picker.Item label="Pacman" value="layoutTwo" />
-        <Picker.Item label="WSU" value="layoutThree" />
-      </Picker>
+      {renderPicker(
+        layout,
+        (value) => handleBackgroundChange(value),
+        layoutPickerItems
+      )}
       <SidebarText>Choose FooterColor</SidebarText>
-      <Picker
-        selectedValue={footerColor}
-        onValueChange={(itemValue) => setFooterColor(itemValue)}
-        style={{
-          width: 200,
-          height: 40,
-          backgroundColor: "#333333",
-          color: "white",
-          marginTop: 10,
-        }}
-      >
-        <Picker.Item label="White" value="#FFFFFF" />
-        <Picker.Item label="Orange" value="#FFA500" />
-        <Picker.Item label="Red" value="#FF0000" />
-        <Picker.Item label="Green" value="#00FF00" />
-        <Picker.Item label="Blue" value="#0000FF" />
-      </Picker>
+      {renderPicker(
+        footerColor,
+        (value) => setFooterColor(value),
+        footerColorPickerItems
+      )}
     </SidebarWrapper>
   );
 };
