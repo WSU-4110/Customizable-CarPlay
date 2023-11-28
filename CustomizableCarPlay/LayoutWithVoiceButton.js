@@ -42,7 +42,6 @@ const LayoutWithVoiceButton = ({ navigation, children }) => {
             <Image source={require('./images/icons8-google-maps-100.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={goToHomePage} style={styles.optionButton}>
-            {/* Assuming you have an image for the home icon similar to the others */}
             <Image source={require('./images/icons8-home-button-60.png')} style={styles.image} />
           </TouchableOpacity>
         </View>
