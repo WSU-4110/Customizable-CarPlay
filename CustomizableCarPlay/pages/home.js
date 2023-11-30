@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
-import { ImageBackground, TouchableOpacity, Text, View } from "react-native";
+import {
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  View,
+  Linking,
+} from "react-native";
 import {
   WhiteText,
   CenteredView,
@@ -17,35 +23,116 @@ import weatherIcon from "../images/weatherIcon.png";
 import whatsAppIcon from "../images/WhatsAppIcon.png";
 import BackgroundImage from "../images/bghomepage.png";
 import SecondBackgroundImage from "../images/pacmanBG.png";
+import LayoutContext from "../components/LayoutContext";
+import DefaultBackgroundImage from "../images/default.png";
+import WayneStateImage from "../images/wsu.png";
 
 function Home() {
-  const [layout, setLayout] = useState("layoutOne");
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const { layout, toggleLayout } = useContext(LayoutContext);
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
   };
 
-  const toggleLayout = () => {
-    if (layout === "layoutOne") {
-      setLayout("layoutTwo");
-    } else {
-      setLayout("layoutOne");
-    }
+  const openSpotify = () => {
+    const url = "https://spotify.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open Spotify:", err);
+    });
+  };
+
+  const openWeather = () => {
+    const url = "https://www.weather.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const openTikTok = () => {
+    const url = "https://www.tiktok.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+  const openWhatsApp = () => {
+    const url = "https://www.whatsapp.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const openMaps = () => {
+    const url = "https://maps.google.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
+  };
+
+  const Instagram = () => {
+    const url = "https://www.instagram.com";
+    Linking.openURL(url).catch((err) => {
+      console.error("Failed to open website:", err);
+    });
   };
 
   const getBackgroundImage = () => {
-    return layout === "layoutOne" ? BackgroundImage : SecondBackgroundImage;
+    let image;
+    switch (layout) {
+      case "Default":
+        image = DefaultBackgroundImage;
+        break;
+      case "layoutOne":
+        image = BackgroundImage;
+        break;
+      case "layoutTwo":
+        image = SecondBackgroundImage;
+        break;
+      case "layoutThree":
+        image = WayneStateImage;
+        break;
+    }
+    console.log(`Current background image: ${image}`);
+    return image;
   };
 
   return (
-    <ImageBackground source={getBackgroundImage()} style={{ flex: 1 }}>
+    <ImageBackground
+      source={getBackgroundImage()}
+      style={{ flex: 1 }}
+      key={layout}
+    >
       <CenteredView>
-        <DraggableIcon source={spotifyIcon} />
-        <DraggableIcon source={instagramIcon} />
-        <DraggableIcon source={mapIcon} />
-        <DraggableIcon source={tikTokIcon} />
-        <DraggableIcon source={weatherIcon} />
-        <DraggableIcon source={whatsAppIcon} />
+        <DraggableIcon
+          source={spotifyIcon}
+          initialPosition={{ x: -170, y: 80 }}
+          onPress={openSpotify}
+        />
+        <DraggableIcon
+          source={instagramIcon}
+          initialPosition={{ x: -170, y: 120 }}
+          onPress={Instagram}
+        />
+        <DraggableIcon
+          source={mapIcon}
+          initialPosition={{ x: -170, y: 160 }}
+          onPress={openMaps}
+        />
+        <DraggableIcon
+          source={tikTokIcon}
+          initialPosition={{ x: -170, y: 200 }}
+          onPress={openTikTok}
+        />
+        <DraggableIcon
+          source={weatherIcon}
+          initialPosition={{ x: -170, y: 240 }}
+          onPress={openWeather}
+        />
+        <DraggableIcon
+          source={whatsAppIcon}
+          initialPosition={{ x: -170, y: 280 }}
+          onPress={openWhatsApp}
+        />
         <View
           style={{ flex: 1, justifyContent: "flex-end", marginBottom: 150 }}
         >
@@ -54,12 +141,7 @@ function Home() {
           </Button>
         </View>
       </CenteredView>
-      <TouchableOpacity
-        onPress={toggleLayout}
-        style={{ position: "absolute", right: 10, top: 10, padding: 10 }}
-      >
-        <WhiteText style={{ fontSize: 14 }}>Swap Layout</WhiteText>
-      </TouchableOpacity>
+
       <Footer />
     </ImageBackground>
   );

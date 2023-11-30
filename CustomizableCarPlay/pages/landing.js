@@ -7,6 +7,7 @@ const LandingFactory = () => ({
   createBody: () => <Text style={styles.middleText}>Default Body</Text>,
 });
 
+
 const WelcomeDisplayFactory = (navigateToHome) => ({
   createHeader: () => <Text style={styles.headerText}>CustomizableCarPlay</Text>,
   createBody: () => (
@@ -23,6 +24,8 @@ const WelcomeDisplayFactory = (navigateToHome) => ({
 const Landing = ({ factory }) => {
   const Header = factory.createHeader();
   const Body = factory.createBody();
+  };
+
   return (
     <ImageBackground source={require('./../assets/main_bg.png')} style={styles.backgroundImage}>
       <View style={styles.headerContainer}>{Header}</View>
