@@ -2,6 +2,9 @@ import { Animated, Text } from "react-native";
 import React, { useRef, useEffect, useContext } from "react";
 import styled from "styled-components/native";
 import LayoutContext from "./LayoutContext";
+import { Picker } from "@react-native-picker/picker";
+import { Platform } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -11,13 +14,6 @@ const SidebarWrapper = styled(Animated.View)`
   width: 250px;
   background-color: black;
   align-items: center;
-
-  shadow-color: gray;
-  shadow-offset: 5px -5px;
-  shadow-opacity: 0.8;
-  shadow-radius: 5px;
-
-  elevation: 10;
 `;
 
 const CustomizeText = styled.Text`
@@ -29,16 +25,10 @@ const CustomizeText = styled.Text`
   font-family: System;
 `;
 
-const SidebarButton = styled.TouchableOpacity`
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #333;
-`;
-
-const SidebarButtonText = styled.Text`
+const SidebarText = styled.Text`
   color: white;
-  font-size: 18px;
+  font-size: 12px;
+  margin-top: 10px;
 `;
 
 const HorizontalLine = styled.View`
@@ -46,10 +36,27 @@ const HorizontalLine = styled.View`
   background-color: white;
   width: 60%;
   margin-top: 10px;
+  margin-bottom: 15px;
 `;
+const layoutPickerItems = [
+  { label: "Default", value: "Default" },
+  { label: "Abstract", value: "layoutOne" },
+  { label: "Pacman", value: "layoutTwo" },
+  { label: "WSU", value: "layoutThree" },
+];
+
+const footerColorPickerItems = [
+  { label: "White", value: "#FFFFFF" },
+  { label: "Orange", value: "#F28500" },
+  { label: "Red", value: "#C21807" },
+  { label: "Green", value: "#228B22" },
+  { label: "Blue", value: "#007FFF" },
+  { label: "Yellow", value: "#FFD800" },
+];
 
 const Sidebar = ({ isVisible, onClose }) => {
-  const { toggleLayout } = useContext(LayoutContext);
+  const { layout, setLayout, footerColor, setFooterColor } =
+    useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
 
   useEffect(() => {
@@ -60,18 +67,71 @@ const Sidebar = ({ isVisible, onClose }) => {
     }).start();
   }, [isVisible]);
 
-  const handleBackgroundSwap = () => {
-    toggleLayout();
+  const handleBackgroundChange = (newLayout) => {
+    setLayout(newLayout);
     onClose();
+  };
+
+  const renderPicker = (selectedValue, onValueChange, items) => {
+    if (Platform.OS === "ios") {
+      return (
+        <RNPickerSelect
+          onValueChange={onValueChange}
+          items={items}
+          style={{
+            inputIOS: {
+              color: "white",
+              paddingTop: 13,
+              paddingHorizontal: 10,
+              paddingBottom: 12,
+              backgroundColor: "#333333",
+              width: 240,
+              marginTop: 4,
+            },
+          }}
+        />
+      );
+    } else {
+      return (
+        <Picker
+          selectedValue={selectedValue}
+          onValueChange={onValueChange}
+          style={{
+            width: 200,
+            height: 40,
+            backgroundColor: "#333333",
+            color: "white",
+            marginTop: 10,
+          }}
+        >
+          {items.map((item) => (
+            <Picker.Item
+              key={item.value}
+              label={item.label}
+              value={item.value}
+            />
+          ))}
+        </Picker>
+      );
+    }
   };
 
   return (
     <SidebarWrapper style={{ left: slideAnim }}>
       <CustomizeText>Customize</CustomizeText>
       <HorizontalLine />
-      <SidebarButton onPress={handleBackgroundSwap}>
-        <SidebarButtonText>Swap Background</SidebarButtonText>
-      </SidebarButton>
+      <SidebarText>Choose Layout</SidebarText>
+      {renderPicker(
+        layout,
+        (value) => handleBackgroundChange(value),
+        layoutPickerItems
+      )}
+      <SidebarText>Choose FooterColor</SidebarText>
+      {renderPicker(
+        footerColor,
+        (value) => setFooterColor(value),
+        footerColorPickerItems
+      )}
     </SidebarWrapper>
   );
 };
