@@ -50,7 +50,7 @@ const LayoutWithVoiceButton = ({ navigation, children }) => {
             <Image source={require('./images/icons8-google-maps-100.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={goToHomePage} style={styles.optionButton}>
-            <Image source={require('./images/icons8-home-button-100.png')} style={styles.image} />
+            <Image source={require('./images/icons8-home-button-80-white')} style={styles.image} />
           </TouchableOpacity>
         </View>
       )}
