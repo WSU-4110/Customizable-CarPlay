@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, View, StyleSheet, Image, Text } from 'react-native';
+import { ImageBackground, TouchableOpacity, View, StyleSheet, Image, Text, Linking } from 'react-native';
 import * as Speech from 'expo-speech';
 import { useNavigation } from "@react-navigation/native";
 
+
 const LayoutWithVoiceButton = ({ navigation, children }) => {
   const [showOptions, setShowOptions] = useState(false);
-
   const onPressButton = () => {
     setShowOptions(!showOptions);
   };
 
-  const openSpotify = () => {
-    Speech.speak("Opening Spotify");
-    //open Spotify
-  };
+const openSpotify = () => {
+  Speech.speak("Opening Spotify");
+  const url = "https://spotify.com";
+  Linking.openURL(url).catch((err) => {
+    console.error("Failed to open Spotify:", err);
+  });
+};
 
-  const openGoogleMaps = () => {
-    Speech.speak("Opening Google Maps");
-    //open Google Maps
-  };
+const openGoogleMaps = () => {
+  Speech.speak("Opening Google Maps");
+  const url = "https://maps.google.com";
+  Linking.openURL(url).catch((err) => {
+    console.error("Failed to open Google Maps:", err);
+  });
+};
 
   const goToHomePage = () => {
     Speech.speak("Going to Home Page");
-    // Problems at the moment navigation.navigate('Home');
+    navigation.navigate('Home');
   };
 
 
@@ -36,13 +42,13 @@ const LayoutWithVoiceButton = ({ navigation, children }) => {
       {showOptions && (
         <View style={styles.optionsContainer}>
           <TouchableOpacity onPress={openSpotify} style={styles.optionButton}>
-            <Image source={require('./images/icons8-spotify-50.png')} style={styles.image} />
+            <Image source={require('./images/icons8-spotify-100.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={openGoogleMaps} style={styles.optionButton}>
             <Image source={require('./images/icons8-google-maps-100.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={goToHomePage} style={styles.optionButton}>
-            <Image source={require('./images/icons8-home-button-60.png')} style={styles.image} />
+            <Image source={require('./images/icons8-home-button-100.png')} style={styles.image} />
           </TouchableOpacity>
         </View>
       )}
