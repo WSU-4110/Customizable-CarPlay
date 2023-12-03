@@ -1,5 +1,6 @@
 
 import React, {useState, useEffect, useContext} from "react";
+import { LayoutProvider } from "./components/LayoutContext";
 import AppNavigator from "./navigator";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -33,11 +34,14 @@ export default function App() {
   });
   
    return(
+    <LayoutProvider>
+    <StatusBar style="auto" />
     <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
       <NavigationContainer theme = {mode === true ? DarkTheme : DefaultTheme}>
          <AppNavigator />
    </NavigationContainer>
     </themeContext.Provider>
+    </LayoutProvider>
     );
  
 
