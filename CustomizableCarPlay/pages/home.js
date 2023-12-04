@@ -105,37 +105,35 @@ function Home() {
       <CenteredView>
         <DraggableIcon
           source={spotifyIcon}
-          initialPosition={{ x: -170, y: 80 }}
+          initialPosition={{ x: -170, y: -100 }}
           onPress={openSpotify}
         />
         <DraggableIcon
           source={instagramIcon}
-          initialPosition={{ x: -170, y: 120 }}
+          initialPosition={{ x: -170, y: -80 }}
           onPress={Instagram}
         />
         <DraggableIcon
           source={mapIcon}
-          initialPosition={{ x: -170, y: 160 }}
+          initialPosition={{ x: -170, y: -60 }}
           onPress={openMaps}
         />
         <DraggableIcon
           source={tikTokIcon}
-          initialPosition={{ x: -170, y: 200 }}
+          initialPosition={{ x: -170, y: -40 }}
           onPress={openTikTok}
         />
         <DraggableIcon
           source={weatherIcon}
-          initialPosition={{ x: -170, y: 240 }}
+          initialPosition={{ x: -170, y: -20 }}
           onPress={openWeather}
         />
         <DraggableIcon
           source={whatsAppIcon}
-          initialPosition={{ x: -170, y: 280 }}
+          initialPosition={{ x: -170, y: 0 }}
           onPress={openWhatsApp}
         />
-        <View
-          style={{ flex: 1, justifyContent: "flex-end", marginBottom: 150 }}
-        >
+        <View>
           <Button onPress={onPressStartDriving}>
             <ButtonText>Start Driving</ButtonText>
           </Button>
