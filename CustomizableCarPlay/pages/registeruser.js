@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, KeyboardAvoidingView,
-  TouchableOpacity } from 'react-native';
+  TouchableOpacity, ScrollView, Image } from 'react-native';
 //import styled from "styled-components/native";
 import { doc, setDoc } from 'firebase/firestore';
 import { collection } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app, db } from '../lib/firebase';
+import { useNavigation } from '@react-navigation/native';
 
-const Register = ({navigation}) => {
+const RegisterUser = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  const handleRegistration = async () => {
+  const handleRegistrationUser = async () => {
     try {
       const auth = getAuth(app);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -33,28 +34,27 @@ const Register = ({navigation}) => {
 
       await setDoc(userDoc, userData);
 
-      console.log('Registration successful for', user.email);
-      navigation.navigate('Login');
+      console.log('User registration successful for', user.email);
+      navigation.navigate('RegisterVehicle', {userId: user.uid});
     } catch (error) {
-      console.error('Registration failed:', error);
-      navigation.navigate('Register');
+      console.error('User registration failed:', error);
+      navigation.navigate('RegisterUser');
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior="padding"
-    >
     <View style={styles.container}>
-      <Text>Register</Text>
-      <TextInput
-        placeholder="First Name"
-        value={firstName}
-        onChangeText={setFirstName}
-        style={styles.input}
-      />
-      <TextInput
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <KeyboardAvoidingView style={styles.innerContainer} behavior="padding">
+          <Image source={require('../images/AppLogo.png')} style={styles.logo} />
+          <Text>RegisterUser</Text>
+          <TextInput
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={setFirstName}
+          style={styles.input}
+        />
+        <TextInput
         placeholder="Last Name"
         value={lastName}
         onChangeText={setLastName}
@@ -80,20 +80,26 @@ const Register = ({navigation}) => {
         style={styles.input}
         secureTextEntry
       />
-    </View>
 
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity onPress={handleRegistration}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Register</Text>
+      <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleRegistrationUser}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>RegisterUser</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Login</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
-    </View>
-  </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </ScrollView>
+  </View>
   );
-}
+};
 
-export default Register;
+export default RegisterUser;
 
 const styles = StyleSheet.create({
   container: {
@@ -101,7 +107,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
-    //padding: 16,
+    padding: 16,
+  },
+  scrollView:{
+    flex: 1,
+    width: '100%',
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    //paddingBottom: 20,
+  },
+  innerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
   },
   input: {
     height: 48,
@@ -114,7 +135,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttonContainer: {
-    marginTop: -20,
+    marginTop: 20,
+    alignItems: 'center',
   },
   button: {
     width: 200, // Adjust the width as needed
@@ -130,6 +152,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  logo: {
+    width: 200, // Set the width of your logo
+    height: 200, // Set the height of your logo
+    resizeMode: 'contain', // Adjust the resize mode as needed
+    marginBottom: 20, // Adjust the margin as needed
+  },
   // Error message style
   errorText: {
     color: 'red', // Set the text color to red
@@ -140,5 +168,3 @@ const styles = StyleSheet.create({
     // You can add more styles as needed (e.g., textAlign, fontWeight, etc.)
   },
 });
-// Styles remain the same
- 

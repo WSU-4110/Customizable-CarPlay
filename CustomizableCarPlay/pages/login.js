@@ -1,10 +1,9 @@
-//import styled from "styled-components/native";
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView,
-  TouchableOpacity} from 'react-native';
+  TouchableOpacity, Image} from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
-//import { WhiteText, CenteredView, Button, Container, ButtonText,} from "../stylePages/homePage";
+
 
 const Login= ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -32,8 +31,8 @@ const Login= ({navigation}) => {
     }
   };
 
-  const handleRegistration = () => {
-    navigation.navigate('Register');
+  const handleRegistrationUser = () => {
+    navigation.navigate('RegisterUser');
   };
   
   return(
@@ -42,6 +41,7 @@ const Login= ({navigation}) => {
     behavior="padding"
     >
       <View style={styles.container}>
+      <Image source={require('../images/AppLogo.png')} style={styles.logo} />
         <Text>Login</Text>
         <TextInput
         placeholder="Email"
@@ -64,9 +64,9 @@ const Login= ({navigation}) => {
             <Text style={styles.buttonText}>Login</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleRegistration}>
+        <TouchableOpacity onPress={handleRegistrationUser}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Register</Text>
+            <Text style={styles.buttonText}>RegisterUser</Text>
           </View>
         </TouchableOpacity>
     </View>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f8f8ff',
     //padding: 16,
   },
   input: {
@@ -110,6 +110,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  logo: {
+    width: 200, // Set the width of your logo
+    height: 200, // Set the height of your logo
+    resizeMode: 'contain', // Adjust the resize mode as needed
+    marginBottom: 20, // Adjust the margin as needed
   },
   // Error message style
   errorText: {

@@ -4,7 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Landing from "./pages/landing";
 import Login from "./pages/login";
-import Register from "./pages/register";
+import RegisterUser from "./pages/registeruser";
+import RegisterVehicle from "./pages/registervehicle";
 import Home from "./pages/home";
 
 const Stack = createStackNavigator();
@@ -14,7 +15,8 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
       <Stack.Screen options={{headerShown: false}}name="Login" component={Login} />
-        <Stack.Screen options={{headerShown: false}}name="Register" component={Register} />
+        <Stack.Screen options={{headerShown: false}}name="RegisterUser" component={RegisterUser} />
+        <Stack.Screen options={{headerShown: false}}name="RegisterVehicle" component={RegisterVehicle} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
