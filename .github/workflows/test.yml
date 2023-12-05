@@ -1,0 +1,25 @@
+name: Run Unit Tests After Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Run Build Script
+        run: ./build.sh  # Execute your build script
+
+      # You can add additional steps here if needed
