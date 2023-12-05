@@ -19,38 +19,5 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install Expo CLI
-        run: npm install -g expo-cli
-
-      - name: Install EAS CLI
-        run: npm install -g eas-cli
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: EAS Login
-        run: |
-          expo login -u ${{ secrets.EXPO_CLI_USERNAME }} -p ${{ secrets.EXPO_CLI_PASSWORD }}
-          expo whoami
-        env:
-          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
-
-      - name: EAS Build Android
-        run: eas build -p android --non-interactive
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
-          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
-          MESSAGING_SENDER_ID: ${{ secrets.MESSAGING_SENDER_ID }}
-          APP_ID: ${{ secrets.APP_ID }}
-
       - name: Run Tests
         run: npm test
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release
-          path: ./.eas/build/*.apk
