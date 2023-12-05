@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { ImageBackground, TouchableOpacity, View, StyleSheet, Image, Text, Linking } from 'react-native';
 import * as Speech from 'expo-speech';
 import { useNavigation } from "@react-navigation/native";
-import AppNavigator from "./navigator";
+//import AppNavigator from "./navigator";
 
 
-const LayoutWithVoiceButton = ({ navigation, children }) => {
+const LayoutWithVoiceButton = ({navigation, children }) => {
   const [showOptions, setShowOptions] = useState(false);
-  
+
   const onPressButton = () => {
+    //onPress shows Spotify, Google Maps, Home Button
     setShowOptions(!showOptions);
   };
 

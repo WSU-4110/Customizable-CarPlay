@@ -7,8 +7,8 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
 
-const Stack = createStackNavigator();
 
+const Stack = createStackNavigator();
 function AppNavigator() {
   return (
     <NavigationContainer>

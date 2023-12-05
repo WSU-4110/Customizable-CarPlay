@@ -12,10 +12,6 @@ export default function Landing() {
 
   };
 
-
-
-
-
   return (
     <View>
       <Text>Landing page - Customized Car Play</Text>
