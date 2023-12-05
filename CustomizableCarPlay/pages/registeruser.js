@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app, db } from '../lib/firebase';
 import { useNavigation } from '@react-navigation/native';
 
-const RegisterUser = ({navigation}) => {
+const RegisterUser = ({navigation, route}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -17,12 +17,12 @@ const RegisterUser = ({navigation}) => {
 
   const handleRegistrationUser = async () => {
     try {
-      const auth = getAuth(app);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      //const auth = getAuth(app);
+      //const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      //const {userId} = route.params;
 
       const usersCollection = collection(db, 'users'); // Replace 'users' with your Firestore collection name
-      const userDoc = doc(usersCollection, user.uid);
+      const userDoc = doc(usersCollection);
 
       const userData = {
         firstName: firstName,
@@ -34,8 +34,8 @@ const RegisterUser = ({navigation}) => {
 
       await setDoc(userDoc, userData);
 
-      console.log('User registration successful for', user.email);
-      navigation.navigate('RegisterVehicle', {userId: user.uid});
+      console.log('User data added successfully');
+      navigation.navigate('RegisterVehicle', { userId: 'yourUserIDvalue'} );
     } catch (error) {
       console.error('User registration failed:', error);
       navigation.navigate('RegisterUser');

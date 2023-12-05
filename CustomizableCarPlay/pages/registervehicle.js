@@ -3,7 +3,10 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingVi
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { useNavigation } from '@react-navigation/native';
-import { async } from '@firebase/util';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+import { app } from '../lib/firebase'; 
+//import { async } from '@firebase/util';
 
 
 
@@ -38,6 +41,8 @@ const RegisterVehicle = ({ route }) => {
       await setDoc(userDoc, { vehicles: vehiclesData }, { merge: true });
 
       console.log('Vehicles registered successfully!');
+      const auth = getAuth(app);
+      await signInWithEmailAndPassword(auth, email, password);
       navigation.navigate('Login'); // Navigate to the login screen after vehicle registration
     } catch (error) {
       console.error('Vehicle registration failed:', error);
