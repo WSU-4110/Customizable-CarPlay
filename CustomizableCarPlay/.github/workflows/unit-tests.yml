@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14.x', '16.x'
 
       - name: Run Build Script
         run: ./build.sh  # Execute your build script
