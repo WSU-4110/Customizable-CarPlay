@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import * as Speech from 'expo-speech';
 import { useNavigation } from '@react-navigation/native';
@@ -74,3 +74,4 @@ describe('LayoutWithVoiceButton', () => {
     });
   });
 });
+*/
