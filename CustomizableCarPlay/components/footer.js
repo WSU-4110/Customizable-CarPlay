@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
-
+import Sidebar from "./customSideBar";
 
 const FooterBar = styled.View`
   flex-direction: row;
@@ -19,22 +19,35 @@ const FooterItem = styled.TouchableOpacity`
 `;
 
 export const Footer = () => {
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
   };
- 
+
+  const toggleSidebar = () => {
+    setSidebarVisible((prevVisible) => !prevVisible);
+  };
 
   return (
-    <FooterBar>
-      <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="create-outline" size={30} color="#000000" />
-      </FooterItem>
-      <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="person-outline" size={30} color="#000000" />
-      </FooterItem>
-      <FooterItem onPress={showPlaceholderAlert}>
-        <Icon name="chatbubbles-outline" size={30} color="#000000" />
-      </FooterItem>
-    </FooterBar>
+    <>
+      <FooterBar testID="footer-bar">
+        <FooterItem onPress={toggleSidebar} testID="custom-sidebar1">
+          <Icon name="create-outline" size={30} color="#000000" />
+        </FooterItem>
+        <FooterItem onPress={showPlaceholderAlert} testID="sidebar-toggle">
+          <Icon name="person-outline" size={30} color="#000000" />
+        </FooterItem>
+        <FooterItem onPress={showPlaceholderAlert} testID="footer-item">
+          <Icon name="chatbubbles-outline" size={30} color="#000000" />
+        </FooterItem>
+      </FooterBar>
+
+      <Sidebar
+        testID="custom-sidebar"
+        isVisible={sidebarVisible}
+        onClose={() => setSidebarVisible(false)}
+      />
+    </>
   );
 };
