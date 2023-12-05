@@ -1,9 +1,12 @@
+
 name: Run Unit Tests After Build
 
 on:
-  push:
-    branches:
-      - assignment6  # Adjust branch name if needed
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+
 
 jobs:
   build-and-test:
@@ -15,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x', '16.x'
+          node-version: '14'
 
       - name: Run Build Script
         run: ./build.sh  # Execute your build script
