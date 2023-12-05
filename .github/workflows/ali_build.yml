@@ -1,9 +1,10 @@
 name: Ali Unittest Build
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'main'
 
 jobs:
   build:
