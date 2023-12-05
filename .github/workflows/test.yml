@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
 
       - name: Run Build Script
-        run: ./build.sh  # Execute your build script
+        run: CustomizableCarPlay/build.sh  # Execute your build script
 
       # You can add additional steps here if needed
 
