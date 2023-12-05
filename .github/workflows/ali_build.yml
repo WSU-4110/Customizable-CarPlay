@@ -28,12 +28,8 @@ jobs:
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: Change working directory
-        run: cd CustomizableCarPlay
-
-
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: EAS Login
         run: |
