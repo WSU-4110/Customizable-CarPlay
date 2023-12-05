@@ -1,17 +1,15 @@
 name: Ali Unittest Build
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'main'
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -21,4 +19,5 @@ jobs:
           node-version: "18"
 
       - name: Run Tests
+        working-directory: CustomizableCarPlay
         run: npm test
