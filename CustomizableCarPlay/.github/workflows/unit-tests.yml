@@ -6,7 +6,6 @@ on:
     inputs:
       branch:
         description: 'Branch name'
-  push:
 
 
 jobs:
