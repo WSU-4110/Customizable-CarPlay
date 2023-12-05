@@ -1,4 +1,4 @@
-name: EAS Build
+name: Ali Unittest Build
 
 on:
   push:
