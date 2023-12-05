@@ -1,9 +1,9 @@
 name: Run Unit Tests After Build
 
-on:
-  push:
-    branches:
-      - assignment6  # Adjust branch name if needed
+on: [push]
+  #push:
+    #branches:
+     # - assignment6  # Adjust branch name if needed
 
 jobs:
   build-and-test:
