@@ -3,6 +3,14 @@
 # dependencies
 node_modules/
 
+android/build/
+ios/build/
+android/app/build/
+ios/Pods/
+ios/Podfile.lock
+.env
+
+
 # Expo
 .expo/
 dist/
@@ -36,3 +44,61 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+
+# IDEs
+.vscode/
+*.code-workspace
+*.code-workspace
+.idea/
+*.iml
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+
+# Dependencies
+yarn-error.log
+npm-debug.log*
+
+# Environment Variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug files
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/assets/index.android.bundle.meta
+android/app/src/main/assets/index.android.bundle.data
+
+# Gradle
+.gradle/
+
+# Android
+*.apk
+*.aab
+
+# iOS
+build/
+*.xcuserdatad/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+Pods/
+*.lock
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+*.hmap
+
+
+# Miscellaneous
+/.expo
+__generated__/
+metro-state/
+coverage

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
@@ -25,6 +26,7 @@ export const Footer = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const { footerColor } = useContext(LayoutContext);
   const navigation = useNavigation();
+
 
 
   const showPlaceholderAlert = () => {

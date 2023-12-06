@@ -54,8 +54,6 @@ const footerColorPickerItems = [
   { label: "Green", value: "#228B22" },
   { label: "Blue", value: "#007FFF" },
   { label: "Yellow", value: "#FFD800" },
-
-
 ];
 
 const Sidebar = ({ isVisible, onClose }) => {

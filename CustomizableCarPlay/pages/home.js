@@ -1,20 +1,9 @@
 import React, { useState, useContext } from "react";
+
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
-import {
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  View,
-  Linking,
-} from "react-native";
-import {
-  WhiteText,
-  CenteredView,
-  Button,
-  Container,
-  ButtonText,
-} from "../stylePages/homePage";
+import { ImageBackground, View, Linking } from "react-native";
+import { CenteredView, Button, ButtonText } from "../stylePages/homePage";
 import spotifyIcon from "../images/spotifyIcon.png";
 import instagramIcon from "../images/InstagramIcon.png";
 import mapIcon from "../images/MapsIcon.png";
@@ -29,8 +18,9 @@ import WayneStateImage from "../images/wsu.png";
 import { useNavigation } from "@react-navigation/native";
 
 function Home() {
+  const { layout, toggleLayout, footerColor } = useContext(LayoutContext);
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const { layout, toggleLayout } = useContext(LayoutContext);
+
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
@@ -106,43 +96,43 @@ function Home() {
       <CenteredView>
         <DraggableIcon
           source={spotifyIcon}
-          initialPosition={{ x: -170, y: 80 }}
+          initialPosition={{ x: -170, y: -100 }}
           onPress={openSpotify}
         />
         <DraggableIcon
           source={instagramIcon}
-          initialPosition={{ x: -170, y: 120 }}
+          initialPosition={{ x: -170, y: -80 }}
           onPress={Instagram}
         />
         <DraggableIcon
           source={mapIcon}
-          initialPosition={{ x: -170, y: 160 }}
+          initialPosition={{ x: -170, y: -60 }}
           onPress={openMaps}
         />
         <DraggableIcon
           source={tikTokIcon}
-          initialPosition={{ x: -170, y: 200 }}
+          initialPosition={{ x: -170, y: -40 }}
           onPress={openTikTok}
         />
         <DraggableIcon
           source={weatherIcon}
-          initialPosition={{ x: -170, y: 240 }}
+          initialPosition={{ x: -170, y: -20 }}
           onPress={openWeather}
         />
         <DraggableIcon
           source={whatsAppIcon}
-          initialPosition={{ x: -170, y: 280 }}
+          initialPosition={{ x: -170, y: 0 }}
           onPress={openWhatsApp}
         />
-        <View
-          style={{ flex: 1, justifyContent: "flex-end", marginBottom: 150 }}
-        >
-          <Button onPress={onPressStartDriving}>
+        <View>
+          <Button
+            onPress={onPressStartDriving}
+            style={{ backgroundColor: footerColor }}
+          >
             <ButtonText>Start Driving</ButtonText>
           </Button>
         </View>
       </CenteredView>
-
       <Footer />
     </ImageBackground>
   );
