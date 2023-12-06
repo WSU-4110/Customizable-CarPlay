@@ -105,3 +105,4 @@ export default function App() {
   const welcomeFactory = WelcomeDisplayFactory(navigateToHome);
   return <Landing factory={welcomeFactory} />;
 }
+

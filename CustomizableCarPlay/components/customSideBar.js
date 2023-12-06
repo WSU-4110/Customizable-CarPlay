@@ -1,10 +1,12 @@
-import { Animated, Text } from "react-native";
-import React, { useRef, useEffect, useContext } from "react";
+import { Animated, Text, Switch } from "react-native";
+import React, { useRef, useEffect, useContext, useState } from "react";
 import styled from "styled-components/native";
 import LayoutContext from "./LayoutContext";
 import { Picker } from "@react-native-picker/picker";
 import { Platform } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
+import {EventRegister}  from "react-native-event-listeners";
+import themeContext from "../components/themeContext";
 
 const SidebarWrapper = styled(Animated.View)`
   position: absolute;
@@ -58,6 +60,23 @@ const Sidebar = ({ isVisible, onClose }) => {
   const { layout, setLayout, footerColor, setFooterColor } =
     useContext(LayoutContext);
   const slideAnim = useRef(new Animated.Value(-250)).current;
+  const theme = useContext(themeContext);
+  const [mode, setMode] = useState(false);
+
+  
+  useEffect(() => {
+    let eventListener = EventRegister.addEventListener(
+      "changeTheme",
+      (data) => {
+         setMode(data);
+         console.log(data);
+    } 
+    );
+    return () => {
+      EventRegister.removeEventListener(eventListener);
+    };
+  });
+
 
   useEffect(() => {
     Animated.timing(slideAnim, {
@@ -132,6 +151,15 @@ const Sidebar = ({ isVisible, onClose }) => {
         (value) => setFooterColor(value),
         footerColorPickerItems
       )}
+  <SidebarText>Dark Mode</SidebarText>
+  <Switch value = {mode}  
+  onValueChange = {(value) => {
+  setMode(value);
+  EventRegister.emit("changeTheme",value );
+  footerColor,
+        (value) => setFooterColor("#000000"),
+        footerColorPickerItems
+  }} />
     </SidebarWrapper>
   );
 };

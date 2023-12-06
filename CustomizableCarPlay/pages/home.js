@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
 import { ImageBackground, View, Linking } from "react-native";
@@ -14,9 +15,12 @@ import SecondBackgroundImage from "../images/pacmanBG.png";
 import LayoutContext from "../components/LayoutContext";
 import DefaultBackgroundImage from "../images/default.png";
 import WayneStateImage from "../images/wsu.png";
+import { useNavigation } from "@react-navigation/native";
 
 function Home() {
   const { layout, toggleLayout, footerColor } = useContext(LayoutContext);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
