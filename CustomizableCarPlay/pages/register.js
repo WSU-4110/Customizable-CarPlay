@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
+import React, {useState, useEffect, useContext} from "react";
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 // Import the validation functions
 import { isValidEmail, isValidPassword } from './validation'; // Adjust the import path if needed
-
+import themeContext from "../components/themeContext";
 function Register({navigation}) {
+  const theme = useContext(themeContext); 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,7 +17,7 @@ function Register({navigation}) {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  // State to track whether registration is completed
+  // State to track whether registration is completedss
   const [registrationCompleted, setRegistrationCompleted] = useState(false);
 
   // Handle registration logic here
@@ -51,14 +53,14 @@ function Register({navigation}) {
     navigation.navigate('Landing');
     };
     return (
-      <View style={styles.container}>
+      <View style= {styles.container}>
         {registrationCompleted ? (
           // Render a different component or navigate to the next page
-          <Text>Registration Completed</Text>
+          <Text style={[styles.text, {color: theme.color }]}>Registration Completed</Text>
         ) : (
           // Registration form
           <>
-            <Text>Registration</Text>
+            <Text style={[styles.text, {color: theme.color }]}>Registration</Text>
             <TextInput
               style={styles.input}
               placeholder="First Name"

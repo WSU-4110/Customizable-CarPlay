@@ -26,6 +26,7 @@ import SecondBackgroundImage from "../images/pacmanBG.png";
 import LayoutContext from "../components/LayoutContext";
 import DefaultBackgroundImage from "../images/default.png";
 import WayneStateImage from "../images/wsu.png";
+import { useNavigation } from "@react-navigation/native";
 
 function Home() {
   const [sidebarVisible, setSidebarVisible] = useState(false);

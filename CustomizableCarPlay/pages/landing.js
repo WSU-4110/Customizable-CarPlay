@@ -33,13 +33,7 @@ export default function Landing() {
       <StyledButton onPress={navigateToHome}>
         <StyledButtonText>Start</StyledButtonText>
       </StyledButton>
-      
       <StatusBar style="auto" />
-      <Switch value = {mode} 
-      onValueChange = {(value) => {
-      setMode(value);
-      EventRegister.emit("changeTheme",value );
-      }} />
     </View>
   );
 }

@@ -8,6 +8,7 @@ import Register from "./pages/register";
 import Home from "./pages/home";
 import themeContext from "./components/themeContext";
 import theme from "./components/theme";
+import Profile from "./pages/profile";
 
 const Stack = createStackNavigator() 
 
@@ -20,6 +21,7 @@ function AppNavigator() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
       
   );

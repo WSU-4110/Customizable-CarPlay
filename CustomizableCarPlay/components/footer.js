@@ -4,6 +4,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Alert } from "react-native";
 import Sidebar from "./customSideBar";
 import LayoutContext from "./LayoutContext";
+import { useNavigation } from "@react-navigation/native";
+
 
 const FooterBar = styled.View`
   flex-direction: row;
@@ -22,6 +24,8 @@ const FooterItem = styled.TouchableOpacity`
 export const Footer = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const { footerColor } = useContext(LayoutContext);
+  const navigation = useNavigation();
+
 
   const showPlaceholderAlert = () => {
     Alert.alert("Under Construction", "This feature is not available yet.");
@@ -30,6 +34,9 @@ export const Footer = () => {
   const toggleSidebar = () => {
     setSidebarVisible((prevVisible) => !prevVisible);
   };
+  const toggleProfilePage = () => {
+    navigation.navigate("Profile");
+  };
 
   return (
     <>
@@ -37,7 +44,7 @@ export const Footer = () => {
         <FooterItem onPress={toggleSidebar}>
           <Icon name="create-outline" size={30} color="#000000" />
         </FooterItem>
-        <FooterItem onPress={showPlaceholderAlert}>
+        <FooterItem onPress={toggleProfilePage}>
           <Icon name="person-outline" size={30} color="#000000" />
         </FooterItem>
         <FooterItem onPress={showPlaceholderAlert}>
