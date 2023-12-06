@@ -50,7 +50,7 @@ function Profile() {
   elevation: 15,
   marginTop: 20,
   backgroundColor: theme.background}}>
-    <Image source={require('../images/car.png')} style={{ width: 20, height: 20, color: theme.color }}/>
+    <Image source={require('../images/car.png')} style={{ width: 20, height: 20}}/>
 <Text style ={{color: theme.color, marginLeft: 10}}>Honda Civic Sport 2023</Text>
 </View>
 <View style={{alignSelf: 'center',
