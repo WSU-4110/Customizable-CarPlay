@@ -21,6 +21,7 @@ export const Button = styled.TouchableOpacity`
   padding-vertical: 10px;
   padding-horizontal: 20px;
   border-radius: 5px;
+  margin-top: 80px;
 
   /* iOS Shadow Props */
   shadow-color: #000;

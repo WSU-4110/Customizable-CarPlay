@@ -1,20 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Footer } from "../components/footer";
 import DraggableIcon from "../components/draggableIcon";
-import {
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  View,
-  Linking,
-} from "react-native";
-import {
-  WhiteText,
-  CenteredView,
-  Button,
-  Container,
-  ButtonText,
-} from "../stylePages/homePage";
+import { ImageBackground, View, Linking } from "react-native";
+import { CenteredView, Button, ButtonText } from "../stylePages/homePage";
 import spotifyIcon from "../images/spotifyIcon.png";
 import instagramIcon from "../images/InstagramIcon.png";
 import mapIcon from "../images/MapsIcon.png";
@@ -28,8 +16,7 @@ import DefaultBackgroundImage from "../images/default.png";
 import WayneStateImage from "../images/wsu.png";
 
 function Home() {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const { layout, toggleLayout } = useContext(LayoutContext);
+  const { layout, toggleLayout, footerColor } = useContext(LayoutContext);
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
@@ -134,7 +121,10 @@ function Home() {
           onPress={openWhatsApp}
         />
         <View>
-          <Button onPress={onPressStartDriving}>
+          <Button
+            onPress={onPressStartDriving}
+            style={{ backgroundColor: footerColor }}
+          >
             <ButtonText>Start Driving</ButtonText>
           </Button>
         </View>

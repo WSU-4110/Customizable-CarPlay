@@ -8,7 +8,7 @@ const LayoutContext = createContext({
 });
 
 export const LayoutProvider = ({ children }) => {
-  const [layout, setLayout] = useState("layoutOne");
+  const [layout, setLayout] = useState("Default");
   const [footerColor, setFooterColor] = useState("#ffffff");
 
   return (
