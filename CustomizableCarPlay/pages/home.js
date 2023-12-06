@@ -16,7 +16,7 @@ import DefaultBackgroundImage from "../images/default.png";
 import WayneStateImage from "../images/wsu.png";
 
 function Home() {
-  const { layout, toggleLayout } = useContext(LayoutContext);
+  const { layout, toggleLayout, footerColor } = useContext(LayoutContext);
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
@@ -121,7 +121,10 @@ function Home() {
           onPress={openWhatsApp}
         />
         <View>
-          <Button onPress={onPressStartDriving}>
+          <Button
+            onPress={onPressStartDriving}
+            style={{ backgroundColor: footerColor }}
+          >
             <ButtonText>Start Driving</ButtonText>
           </Button>
         </View>
