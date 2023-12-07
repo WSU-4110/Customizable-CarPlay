@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LayoutProvider } from "./components/LayoutContext";
@@ -7,7 +8,6 @@ import themeContext from "./components/themeContext";
 import theme from "./components/theme";
 import { EventRegister } from "react-native-event-listeners";
 import { NavigationContainer, DarkTheme, DefaultTheme } from "@react-navigation/native";
-
 
 
 export default function App() {

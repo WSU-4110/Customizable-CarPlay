@@ -4,7 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Landing from "./pages/landing";
 import Login from "./pages/login";
-import Register from "./pages/register";
+import RegisterUser from "./pages/registeruser";
+import RegisterVehicle from "./pages/registervehicle";
 import Home from "./pages/home";
 import themeContext from "./components/themeContext";
 import theme from "./components/theme";
@@ -26,5 +27,3 @@ function AppNavigator() {
       
   );
 }
-
-export default AppNavigator;
