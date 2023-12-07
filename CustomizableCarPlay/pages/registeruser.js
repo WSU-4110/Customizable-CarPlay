@@ -28,8 +28,7 @@ const RegisterUser = ({navigation, route}) => {
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,
-        displayName: 'User Display Name', // Replace with actual user display name
-        // Add more user-related data here
+        displayName: email,
       };
 
       await setDoc(userDoc, userData);
