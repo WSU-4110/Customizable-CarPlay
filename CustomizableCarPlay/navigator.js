@@ -26,7 +26,6 @@ function AppNavigator() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
-      
+    
   );
 }
-export default AppNavigator;
