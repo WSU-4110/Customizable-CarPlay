@@ -24,6 +24,7 @@ function Home() {
 
   const onPressStartDriving = () => {
     console.log("Start Driving Pressed!");
+    navigation.navigate('App')
   };
 
   const openSpotify = () => {

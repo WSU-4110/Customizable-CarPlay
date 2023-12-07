@@ -10,6 +10,7 @@ import Home from "./pages/home";
 import themeContext from "./components/themeContext";
 import theme from "./components/theme";
 import Profile from "./pages/profile";
+import App from "./src/App";
 
 const Stack = createStackNavigator() 
 
@@ -25,6 +26,7 @@ function AppNavigator() {
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="App" component={App} />
       </Stack.Navigator>
       
   );
