@@ -1,0 +1,27 @@
+name: Ali Unittest Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        working-directory: CustomizableCarPlay
+        run: npm ci
+
+      - name: Run Tests
+        working-directory: CustomizableCarPlay
+        run: npm test

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -7,8 +7,13 @@ import Login from "./pages/login";
 import RegisterUser from "./pages/registeruser";
 import RegisterVehicle from "./pages/registervehicle";
 import Home from "./pages/home";
+import themeContext from "./components/themeContext";
+import theme from "./components/theme";
+import Profile from "./pages/profile";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator() 
+
+
 
 function AppNavigator() {
   return (
@@ -19,8 +24,9 @@ function AppNavigator() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
-    </NavigationContainer>
+      
   );
 }
 export default AppNavigator;
