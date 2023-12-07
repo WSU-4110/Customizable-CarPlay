@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LayoutProvider } from "./components/LayoutContext";
 import AppNavigator from "./navigator";
-import QuickAcessButton from './QuickAccessButton';
+import QuickAccessButton from './QuickAccessButton';
 import themeContext from "./components/themeContext";
 import theme from "./components/theme";
 import { EventRegister } from "react-native-event-listeners";
@@ -32,9 +32,9 @@ export default function App() {
     <StatusBar style="auto" />
     <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
       <NavigationContainer theme = {mode === true ? DarkTheme : DefaultTheme}>
-      <QuickAcessButton>
+      <QuickAccessButton>
          <AppNavigator />
-      </QuickAcessButton>
+      </QuickAccessButton>
    </NavigationContainer>
     </themeContext.Provider>
     </LayoutProvider>
