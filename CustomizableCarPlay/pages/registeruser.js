@@ -17,12 +17,12 @@ const RegisterUser = ({navigation, route}) => {
 
   const handleRegistrationUser = async () => {
     try {
-      //const auth = getAuth(app);
-      //const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const auth = getAuth(app);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       //const {userId} = route.params;
 
       const usersCollection = collection(db, 'users'); // Replace 'users' with your Firestore collection name
-      const userDoc = doc(usersCollection);
+      const userDoc = doc(usersCollection, userCredential.user.uid );
 
       const userData = {
         firstName: firstName,
@@ -35,7 +35,7 @@ const RegisterUser = ({navigation, route}) => {
       await setDoc(userDoc, userData);
 
       console.log('User data added successfully');
-      navigation.navigate('RegisterVehicle', { userId: 'yourUserIDvalue'} );
+      navigation.navigate('RegisterVehicle', { userId: userCredential.user.uid, email, password, } );
     } catch (error) {
       console.error('User registration failed:', error);
       navigation.navigate('RegisterUser');
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff',
     padding: 16,
   },
   scrollView:{

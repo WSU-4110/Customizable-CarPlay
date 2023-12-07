@@ -11,7 +11,7 @@ import { app } from '../lib/firebase';
 
 
 const RegisterVehicle = ({ route }) => {
-  const { userId } = route.params; // Get the user ID passed from the previous screen
+  const { userId, email, password } = route.params; // Get the user ID passed from the previous screen
   const [vehicles, setVehicles] = useState([
     { make: '', model: '', plateNumber: '' } // Initial empty vehicle
   ]);
@@ -29,16 +29,24 @@ const RegisterVehicle = ({ route }) => {
 
   const handleRegisterVehicle = async() => {
     try {
-      const usersCollection = collection(db, 'users');
-      const userDoc = doc(usersCollection, userId);
+      
+      const userDoc = doc(collection(db, 'users'), userId);
+      const vehiclesCollection = collection(userDoc, 'vehicles');
 
-      const vehiclesData = vehicles.map((vehicle) => ({
+
+      for(const vehicle of vehicles){
+      //const vehiclesData = vehicles.map((vehicle) => ({
+        await setDoc(doc(vehiclesCollection),{
         make: vehicle.make,
         model: vehicle.model,
         plateNumber: vehicle.plateNumber,
-      }));
+      });
+    }
 
-      await setDoc(userDoc, { vehicles: vehiclesData }, { merge: true });
+      //await Promise.all(
+        //vehiclesData.map((vehicleData)=> setDoc(doc(vehiclesCollection), vehiclesData)
+        //)
+     // );
 
       console.log('Vehicles registered successfully!');
       const auth = getAuth(app);
@@ -126,7 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fffff',
     padding: 16,
   },
   scrollView:{
