@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 
 
-const LayoutWithVoiceButton = ({ children }) => {
+const QuickAcessButton = ({ children }) => {
   const [showOptions, setShowOptions] = useState(false);
   const navigation = useNavigation(); // Using the hook
 
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LayoutWithVoiceButton;
+export default QuickAcessButton;
