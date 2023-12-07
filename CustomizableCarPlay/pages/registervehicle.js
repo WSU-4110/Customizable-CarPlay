@@ -11,7 +11,13 @@ import { app } from '../lib/firebase';
 
 
 const RegisterVehicle = ({ route }) => {
+
   const { userId, email, password } = route.params; // Get the user ID passed from the previous screen
+
+  //const { userId} = route.params; // Get the user ID passed from the previous screen
+  //console.log('Received Email:', email);
+  //console.log('Received Password:', password);
+
   const [vehicles, setVehicles] = useState([
     { make: '', model: '', plateNumber: '' } // Initial empty vehicle
   ]);
@@ -50,7 +56,6 @@ const RegisterVehicle = ({ route }) => {
 
       console.log('Vehicles registered successfully!');
       const auth = getAuth(app);
-      await signInWithEmailAndPassword(auth, email, password);
       navigation.navigate('Login'); // Navigate to the login screen after vehicle registration
     } catch (error) {
       console.error('Vehicle registration failed:', error);

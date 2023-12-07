@@ -22,12 +22,12 @@ const Login= ({navigation}) => {
 
   const handleLogin = async() => {
     try{
-      
+      console.log('Attempting login with:', email, password);
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful for', email);
       navigation.navigate('Landing');
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed:', error.code, error.message);
     }
   };
 

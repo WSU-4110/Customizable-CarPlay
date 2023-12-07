@@ -35,7 +35,13 @@ const RegisterUser = ({navigation, route}) => {
       await setDoc(userDoc, userData);
 
       console.log('User data added successfully');
+
       navigation.navigate('RegisterVehicle', { userId: userCredential.user.uid, email, password, } );
+
+      //console.log('Email:', email);
+      //console.log('Password:', password);
+      //navigation.navigate('RegisterVehicle', { userId: "userid", email: email, } );
+
     } catch (error) {
       console.error('User registration failed:', error);
       navigation.navigate('RegisterUser');
