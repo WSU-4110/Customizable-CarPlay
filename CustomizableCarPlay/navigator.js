@@ -12,16 +12,15 @@ const Stack = createStackNavigator();
 
 function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen options={{headerShown: false}}name="Login" component={Login} />
-        <Stack.Screen options={{headerShown: false}}name="RegisterUser" component={RegisterUser} />
-        <Stack.Screen options={{headerShown: false}}name="RegisterVehicle" component={RegisterVehicle} />
+   
+      <Stack.Navigator initialRouteName="Register">
+        <Stack.Screen name="RegisterUser" component={RegisterUser} />
+        <Stack.Screen name="RegisterVehicle" component={RegisterVehicle} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 export default AppNavigator;
