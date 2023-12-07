@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LayoutProvider } from "./components/LayoutContext";
 import AppNavigator from "./navigator";
-import QuickAcessButton from './QuickAcessButton';
+import QuickAcessButton from './QuickAccessButton';
 import themeContext from "./components/themeContext";
 import theme from "./components/theme";
 import { EventRegister } from "react-native-event-listeners";
