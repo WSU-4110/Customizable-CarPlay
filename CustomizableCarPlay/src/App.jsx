@@ -1,18 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { ImageBackground, TouchableOpacity, View, StyleSheet, Image, Text, Linking } from 'react-native';
-import * as Speech from 'expo-speech';
 import { useNavigation } from "@react-navigation/native";
-import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC0S35P0uuC8BX-WvZH_HJTXBYHfhBAhgM",
-  authDomain: "customizable-carplay-ef401.firebaseapp.com",
-  databaseURL: "https://customizable-carplay-ef401-default-rtdb.firebaseio.com",
-  projectId: "customizable-carplay-ef401",
-  storageBucket: "customizable-carplay-ef401.appspot.com",
-  messagingSenderId: "17748607274",
-  appId: "1:17748607274:web:1c55289dd428b8ed069e53"
-};
 
 const App = () => {
   const mapContainerRef = useRef(null);
