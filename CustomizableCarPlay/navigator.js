@@ -19,7 +19,9 @@ function AppNavigator() {
   return (
    
       <Stack.Navigator initialRouteName="Register">
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="RegisterUser" component={RegisterUser} />
+        <Stack.Screen name="RegisterVehicle" component={RegisterVehicle} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
@@ -27,3 +29,4 @@ function AppNavigator() {
       
   );
 }
+export default AppNavigator;
