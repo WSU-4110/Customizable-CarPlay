@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { ImageBackground, TouchableOpacity, View, StyleSheet, Image, Text, Linking } from 'react-native';
 import * as Speech from 'expo-speech';
 import { useNavigation } from "@react-navigation/native";
-//import AppNavigator from "./navigator";
 
 
-const LayoutWithVoiceButton = ({navigation, children }) => {
+
+const LayoutWithVoiceButton = ({ children }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const navigation = useNavigation(); // Using the hook
 
   const onPressButton = () => {
     //onPress shows Spotify, Google Maps, Home Button
@@ -51,7 +52,7 @@ const LayoutWithVoiceButton = ({navigation, children }) => {
             <Image source={require('./images/icons8-google-maps-100-Color.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={goToHomePage} style={styles.optionButton}>
-            <Image source={require('./images/icons8-home-button-80-white.png')} style={styles.image} />
+          <Image source={require('./images/icons8-home-button-80-white.png')} style={styles.image} />
           </TouchableOpacity>
         </View>
       )}
