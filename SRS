@@ -1,0 +1,309 @@
+Assignment 2: Software Requirements Specification
+
+Team:   Customize Car Play
+Project Title:  Customize Car Play
+Members: 
+Morgan Shields-Wykes
+Moin Syed
+Kevin Smith
+Delbert Li
+Aman Rawat
+Ali Nassar
+
+Meetings date 	Participants
+09/18/2022	Morgan Shields-Wykes
+Moin Syed
+Kevin Smith
+Delbert Li
+Aman Rawat
+Ali Nassar
+09/19/2022	Morgan Shields-Wykes
+Moin Syed
+Kevin Smith
+Delbert Li
+Aman Rawat
+Ali Nassar
+
+
+
+Stakeholders	Requirements
+General Users	FR1: Customize Icons
+FR2: Communicate with other drivers
+FR3: Ability to customize profile
+FR4: Make application multilingual
+FR5: Customize quick chat (pre-recorded speeches)
+NR1: Safely communicate while driving
+Designers/Developers	FR6: Ability to choose between different templates
+FR7: Change colors of templates
+NR2: Maintain performance regardless of design
+FR8: Communicate only within a certain range of other users (ex 1 mile)
+FR9: Register/Create account - Store in database
+FR10: Login - retrieve and verify account from database
+FR11: Store/retrieve customizations from database
+NR3: Securely store user data
+All	NR4: Safety - Don’t allow foul language or harassment with communication
+NR5: Performance - Dont allow users to spam chats
+FR12: Use GPS to track location of users on the road
+FR13: Notify Users of hazards nearby
+FR14: Integrate google maps within app
+FR15: Ability to name car that other users can see
+FR16: Disable phone at specified speed
+FR17: Integrate in-app virtual assistant
+FR18: Mirror mobile app design to vehicle dash screen
+Emergency Services	FR19: Set and display a personal status
+FR20: Quick access to 911
+FR21: Access to non-emergency dispatch
+
+
+
+
+FR1.  Customize Icons
+Goal: Allow users to choose between different icons (ex hazard icons).
+
+Stakeholders: General Users
+Description: When a user chooses the customize tab, they are allowed to choose between different hazard  icons that fit their liking. The icons that they will be choose from will be icons such as hazard icons, messaging icons, music icons, etc.
+Origin: Project Leader introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR2.  Communicate with other drivers
+Goal: Communicate with nearby drivers to discuss hazards or other issues on the road.
+
+Stakeholders: General Users
+Description: Allow users to communicate with other users on the road. If there is an issue such as a flood or a dangerous driver, users can inform other nearby users about the issue. The ability to communicate will be a side-bar on the application when activated. This should show the nearby cars and quick-chat options.
+Origin: Project Leader Introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+
+FR3.  Ability to customize Viewport
+Goal: Users can choose template and customizable icons for their viewport. 
+
+Stakeholders: General Users
+Description: There will be a couple templates that a user can choose from and it changes the view of their screen. They will be able to customize where their icons are on this viewport.
+Origin: Project Leader Introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+FR4.  Make application multilingual 
+Goal: Users can change the language of the application.
+
+Stakeholders: General Users
+Description: Users can choose between different languages so they can use the application regardless of what languages they understand. 
+Origin: Based on the initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+
+FR5.  Customize Quick chat
+Goal: Enable users to select from pre-written messages for quick communication.
+
+Stakeholders: General users and emergency services
+Description: Users can pick from a list of pre-written messages like "Traffic ahead," "Roadblock," etc., for general communication while driving. 
+Origin: Based on the initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+FR6.  Ability to choose between different templates
+Goal: Offer 3 different design templates to enable interface customization.
+
+Stakeholders: General users
+Description: User can select from three different templates which differ in how applications are displayed on the drivers dash screen. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+FR7.  Change colors of templates
+Goal: Choose the  background color on the app
+
+Stakeholders: General users
+Description:  Users will be able to change their backgrounds and will have three color scheme choices; white (light mode), black (dark mode), and Custom. Custom will allow people to choose their scheme from a color slider.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+FR8.  Communicate within a certain range of other users (ex: 1 mile)
+Goal: Allow yourself to “talk”  or communicate with anyone nearby using the app
+
+Stakeholders: General users
+Description:  Drivers will be able to select nearby vehicles and send concise texts that the user set up before driving. Surrounding drivers will appear on the road map via their vehicle name. Users will select the vehicle they want to send a message to. Once recipient is selected, the driver will be able to choose to  from their pre-set messages. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+FR9.  Register/Create account - store info in database
+Goal: Collect user information to ensure a custom experience for that individual.
+
+Stakeholders: General users
+Description: The user will be prompted to create an account upon the first time opening the application. The user will be prompted to add themselves as the driver- include their license number, register their vehicle- include their license plate number and will ask user for permission to access their other applications on their phone so we can store their preferences and progress within other apps. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR10.  Login - retrieve and verify info from database
+Goal: Allow user to control app access and update necessary information.
+
+Stakeholders: General users
+Description: Application will update automatically to reflect users most recent phone activity. Users can pick up where they left off; music, podcasts, maps. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+FR11.  Store/retrieve customizations from database (template customizations)
+Goal: Save drivers design decisions for ease of use.
+
+Stakeholders: General users
+Description: Save users decision on design template and color scheme so the preferred view becomes the default view each time the app is opened. Allow user to easily change and save template or color scheme in the app display settings. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR12.  Use GPS location to track users on the road
+Goal: Maintain users location to retain effective communication and safety features.
+
+Stakeholders: General users, emergency services
+Description: Keep users location enabled on the app so it updates in real time. An accurate location will allow user to report and observe hazards relevant  road hazards. Communicate with passersby in a timely manner. An updated location also allows for emergency services to quickly identify and address  hazards pertaining to the road and individuals. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+FR13.  Notify Users of hazards nearby
+Goal: Alert nearby drivers of hazards pertaining to the road/ area.
+
+Stakeholders: General users and emergency services
+Description: Before driving, users will be able to select a handful of icons from a long list of icons. The icons selected by the user will be the only icons available them when driving. The driver can then select the relevant icon to be displayed on the road map for other drivers and emergency services to observe.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR14.  Integrate Google Maps within app
+Goal: Incorporate a reliable default maps system.
+
+Stakeholders: General users
+Description: If the users does not specify a particular maps application, Google maps will be used as the default.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+
+FR15.  Ability to name individual vehicle that is visible to other drivers
+Goal: Add to customization for drivers and create an easy way to identify/communicate with others.
+Stakeholders: General users
+Description: Gives the drivers autonomy while encouraging personalization and creativity. Upon initial app registration users will assign a name to their vehicle. It can be altered in the settings. Makes it easy for drivers and emergency services to identify and select nearby vehicles if trying to communicate.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+FR16.  Disable phone at specified  speed
+Goal: Disables the phone exterior app functions when passed a certain speed.
+
+Stakeholders: General Users
+Description: The users phone will restrict access when traveling at speeds about 10 mph and prevent the user from leaving the “Customizable Carplay” application. This is a safety feature to prevent individuals from accessing non-necessary apps that will cause extra distraction. The app will re-enable the exiting of the app once your speed is below 10 mph.
+Origin: Project Leader introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+
+FR17.  Integrate in-app virtual assistant
+Goal: Allow drivers to execute actions within the application in a safe manner via voice command.
+Stakeholders: General Users
+Description:  The user can direct the virtual assistant to report a hazard, send a pre-set message to a nearby car, contact emergency services, change drivers status, or change the capacity to which they are using a certain application (pausing music, switch to google maps, play podcast etc.)
+Origin: Project Leader introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR18.  Mirror mobile app design to vehicle dash screen
+Goal: Extend the users design to their dash screen.
+
+Stakeholders: General Users
+Description: The user designs their dash display on the mobile phone and once in their car they can choose to “mirror” the app display if they have a dash screen.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+
+FR19.  Set and display a personal status
+Goal: A visual and straightforward way to communicate a users overall status.
+
+Stakeholders: General Users
+Description: The default status of each user will resort to green=okay, if the user wants to change their status to yellow=needs assistance or red=serious distress  they can manually select the other options on their dash screen or through the voice command.
+Origin: Project Leader introduction of the project.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+FR20.  Quick access to 911
+Goal: Easily contact 911 in emergency situations.
+
+Stakeholders: General Users
+Description: If in need of immediate medical attention there will be a button on the default map view that immediately connect the user to a 911 dispatcher. The driver can also use a voice command to enable this.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 2
+
+
+
+
+FR21.  Access to non-emergency dispatch
+Goal: Give drivers an way to effectively communicate non-emergency situations.
+
+Stakeholders: General Users
+Description: When the user is not driving, there will be an option for them to send a message to a non-emergency line. This will bring awareness to emergency situations while keeping the emergency line available for only serious cases.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 3
+
+NR1.  Safely communicate while driving
+Goal: Allow drivers to direct phrases to specific vehicles in a safe manner.
+
+Stakeholders: General users
+Description: Users will pre-set up to five phrases that relate to a variety of anticipated issues the individual may experience when driving. While driving, the individual  will then be able to select a specific vehicle through the map display and send one of the pre-set messages.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+
+NR2. Maintain performance regardless of design template
+Goal: Prioritize safety and communication.
+
+Stakeholders: Customers
+Description: No matter what template or color scheme the user picks. Every user of the app will be able to select their preferred hazard icons, set pre-set phrases, change their status, utilize the map view, and command the virtual assistant.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+NR3.  Securely store user data
+Goal: Reassure users that their other app data and personal data is secured in our mobile app.
+
+Stakeholders: General users
+Description: While users register their vehicle and personal information and grant app permissions, the only information visible to other drivers and emergency services is your vehicle name, status, and location. These three features are only available to local emergency serves and nearby drivers. A drivers information cannot be saved by another driver. 
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+
+NR4.  Safety- dont allow foul language or harassment within communication portion of app
+Goal: Allow for effective and necessary communication.
+
+Stakeholders: Customers
+Description: There will be a character limit and dictation restriction when creating the pre-set phrases to restrict misuse of the features.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+NR5.  Performance - Dont allow users to spam chat
+Goal: Prioritize clear and concise notifications.
+
+Stakeholders: General users and emergency services
+Description: Restrict the amount of times a user will be able to send messages or contact emergency services in a specified time frame. This is to prevent misuse and taking advantage of the system.
+Origin: Based on initial project specification document, team members came up with this description during the first meeting.
+Version: 1.0	Date: 09/19/2023	Priority: 1
+
+
+ 
